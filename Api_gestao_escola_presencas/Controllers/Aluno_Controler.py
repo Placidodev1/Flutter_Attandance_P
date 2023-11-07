@@ -5,27 +5,51 @@ from flask import jsonify,abort
 
 blp = Blueprint("aluno", __name__)
 
-@blp.route("/Alunos")
-class Get_aluno():
+# @blp.route("/Alunos")
+# class Get_aluno():
 
-#   LISTAR TODOS Alunos 
-   def get_all_alunos(self):
-        try:
-            query = """SELECT * FROM aluno;"""
-            cursor = connection.cursor()
-            cursor.execute(query)
-            aluno = cursor.fetchall()
-            cursor.close()
-        except Exception as ex:
-            return jsonify({"message":str(ex),"code":500})
-        if aluno is None:
+# #   LISTAR TODOS Alunos 
+#    def get_all_alunos(self):
+#         try:
+#             query = """SELECT * FROM aluno;"""
+#             cursor = connection.cursor()
+#             cursor.execute(query)
+#             aluno = cursor.fetchall()
+#             cursor.close()
+#         except Exception as ex:
+#             return jsonify({"message":str(ex),"code":500})
+#         if aluno is None:
+#             abort(404)
+#         return jsonify({"data": aluno })
+
+
+@blp.route("/Alunos", methods=["GET"])
+def get_all_alunos():
+    try:
+        query = "SELECT * FROM aluno;"
+        cursor = connection.cursor()
+        cursor.execute(query)
+        aluno = cursor.fetchall()
+        cursor.close()
+
+        if not aluno:
+            # Se a consulta retornar uma lista vazia, você pode retornar um HTTP 404.
             abort(404)
-        return jsonify({"data": aluno })
+        else:
+            return jsonify({"data": aluno})
+    except pymysql.Error as db_error:
+        # Captura exceções relacionadas ao banco de dados.
+        return jsonify({"message": str(db_error), "code": 500}), 500
+    except Exception as ex:
+        # Captura exceções gerais.
+        return jsonify({"message": str(ex), "code": 500}), 500
+    
+    
    
 @blp.route("/Aluno_especifico/<int:idAluno>")
 
 #   LISTAR unico aluno 
-def get_all_alunos( idAluno):
+def get__1_aluno( idAluno):
     try:
         query = """SELECT * FROM aluno WHERE idAluno = %s;"""
         cursor = connection.cursor()
