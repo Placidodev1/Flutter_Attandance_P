@@ -1,0 +1,4 @@
+#Wed Nov 08 15:01:53 EET 2023
+base.0=C\:\\Users\\Placido Nhapulo\\Desktop\\Acsun\\Versoes de attandance project\\Projecto Attandance\\v5\\Versao_registro\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

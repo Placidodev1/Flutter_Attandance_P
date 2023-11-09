@@ -37,9 +37,9 @@ def get_all_alunos():
             abort(404)
         else:
             return jsonify({"data": aluno})
-    except pymysql.Error as db_error:
-        # Captura exceções relacionadas ao banco de dados.
-        return jsonify({"message": str(db_error), "code": 500}), 500
+    # except pymysql.Error as db_error:
+    #     # Captura exceções relacionadas ao banco de dados.
+    #     return jsonify({"message": str(db_error), "code": 500}), 500
     except Exception as ex:
         # Captura exceções gerais.
         return jsonify({"message": str(ex), "code": 500}), 500
