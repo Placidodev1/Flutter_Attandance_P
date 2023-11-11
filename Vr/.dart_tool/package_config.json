@@ -314,13 +314,13 @@
       "languageVersion": "2.19"
     },
     {
-      "name": "flutterattandance",
+      "name": "Registoflutterattandance",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2023-11-08T09:16:40.020208Z",
+  "generated": "2023-11-10T17:40:55.675227Z",
   "generator": "pub",
   "generatorVersion": "3.1.5"
 }

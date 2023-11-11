@@ -155,15 +155,8 @@ def marcar_presenca(idAluno, selected_case):
                 cursor.execute(query, (idAluno ))
                 resultado = connection.commit()
                 cursor.close()
-                # data_atual = datetime.date.today()
 
-
-
-                # # data_formatada = data_atual.strftime('%Y-%m-%d')
-                # query = "SELECT idPresenca FROM Presenca WHERE idAluno = %s AND Data_presenca = %s"
-                # cursor = connection.cursor()
-                # cursor.execute(query, (idAluno, data_formatada))
-                # resultado = cursor.fetchone()
+                
                 return resultado
             except pymysql.err.InterfaceError as e:
                 return(f"Erro de interface: {e}")
@@ -185,7 +178,7 @@ def marcar_presenca(idAluno, selected_case):
         elif Presenca is None :
             # return "niasdn"
             PresencaCriada = Criar_presenca()
-            # return PresencaCriada
+            return PresencaCriada
             try:
                 data = request.json 
                 Local_subida_casa_escola = data.get("Local_subida_casa_escola")

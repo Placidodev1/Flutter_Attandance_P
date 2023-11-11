@@ -61,3 +61,21 @@ def get__1_aluno( idAluno):
     if aluno_especifico is None:
         abort(404)
     return jsonify({"data": aluno_especifico })
+
+
+
+@blp.route("/Aluno_especifico_Barcode/<int:Barcode>")
+
+#   LISTAR unico aluno 
+def get_1_Barcode_aluno( Barcode):
+    try:
+        query = """SELECT * FROM aluno WHERE Barcode = %s;"""
+        cursor = connection.cursor()
+        cursor.execute(query, Barcode)
+        aluno_especifico = cursor.fetchall()
+        cursor.close()
+    except Exception as ex:
+        return jsonify({"message":str(ex),"code":500})
+    if aluno_especifico is None:
+        abort(404)
+    return jsonify({"data": aluno_especifico })
