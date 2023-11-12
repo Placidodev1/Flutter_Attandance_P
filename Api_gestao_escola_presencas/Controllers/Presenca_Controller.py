@@ -146,13 +146,13 @@ def marcar_presenca(idAluno, selected_case):
     def Criar_presenca():
             try:
                 # data = request.json
-                data_atual = datetime.datetime.now()
-                data_formatada = data_atual.strftime('%Y-%m-%d')
+                # data_atual = datetime.datetime.now()
+                # data_formatada = data_atual.strftime('%Y-%m-%d')
                 
             
-                query = """INSERT INTO presenca (idAluno) VALUES ( %s)"""
+                query = """INSERT INTO presenca (IdAluno) VALUES (%s)"""
                 cursor = connection.cursor()
-                cursor.execute(query, (idAluno ))
+                cursor.execute(query, (idAluno,))
                 resultado = connection.commit()
                 cursor.close()
 
@@ -160,13 +160,14 @@ def marcar_presenca(idAluno, selected_case):
                 return resultado
             except pymysql.err.InterfaceError as e:
                 return(f"Erro de interface: {e}")
+            except pymysql.err.DataError as e:
+                return (f"Erro de formato de dados: {e}")
+            except pymysql.err.IntegrityError as e:
+                return f"Erro de integridade: {e}"
             except Exception as e:
                 return(f"Erro desconhecido: {e}")
             
-            # except pymysql.err.DataError as e:
-            #     return (f"Erro de formato de dados: {e}")
-            # except pymysql.err.IntegrityError as e:
-            #     return f"Erro de integridade: {e}"
+            
 
 
                 

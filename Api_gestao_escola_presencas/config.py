@@ -6,4 +6,4 @@ class Config:
     PASSWORD= "placido1"
     HOST = "localhost"
     PORT = 3306
-    DATABASE = "presenca"
+    DATABASE = "mydb"
