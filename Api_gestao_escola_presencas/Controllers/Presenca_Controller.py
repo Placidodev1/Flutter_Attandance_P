@@ -122,7 +122,7 @@ def Verificar_presenca(idAluno):
     try:
         data_atual = datetime.datetime.now()
         data_formatada = data_atual.strftime('%Y-%m-%d')
-        query = "SELECT * FROM Presenca WHERE idAluno = %s AND Data_de_Criacao = %s"
+        query = "SELECT * FROM Presenca WHERE idAluno = %s AND Data_presenca = %s"
         cursor = connection.cursor()
         cursor.execute(query, (idAluno, data_formatada ))
         resultado = cursor.fetchone()
