@@ -145,18 +145,21 @@ def marcar_presenca(idAluno, selected_case):
     # Instacia a presenca com dados basicos e o resto deixa null
     def Criar_presenca():
             try:
-                # data = request.json
-                # data_atual = datetime.datetime.now()
-                # data_formatada = data_atual.strftime('%Y-%m-%d')
+                data = request.json
+                data_atual = datetime.datetime.now()
+                data_formatada = data_atual.strftime('%Y-%m-%d')
                 
             
-                query = """INSERT INTO presenca (IdAluno) VALUES (%s)"""
+                query = """INSERT INTO presenca (IdAluno, Data_presenca) VALUES (%s, %s)"""
                 cursor = connection.cursor()
-                cursor.execute(query, (idAluno,))
+                cursor.execute(query, (idAluno, data_formatada))
                 resultado = connection.commit()
                 cursor.close()
 
-                
+                query = "SELECT idPresenca FROM Presenca WHERE idAluno = %s AND Data_presenca = %s"
+                cursor = connection.cursor()
+                cursor.execute(query, (idAluno, data_formatada))
+                resultado = cursor.fetchone()
                 return resultado
             except pymysql.err.InterfaceError as e:
                 return(f"Erro de interface: {e}")
@@ -179,7 +182,7 @@ def marcar_presenca(idAluno, selected_case):
         elif Presenca is None :
             # return "niasdn"
             PresencaCriada = Criar_presenca()
-            return PresencaCriada
+            # return PresencaCriada
             try:
                 data = request.json 
                 Local_subida_casa_escola = data.get("Local_subida_casa_escola")
@@ -196,13 +199,13 @@ def marcar_presenca(idAluno, selected_case):
                 data_atual = datetime.date.today()
                 tipo_de_marcacao = data.get("tipo_de_marcacao")
                 local = data.get("local")
-                id_funcionario = data.get("id_funcionario")
+                id_funcionario = data.get("idFuncionario")
 
                 
 
                 with connection.cursor() as cursor:
-                    sql = "INSERT INTO Momento_de_marcacao (`Data de marcacao`, `idFuncionario`, `idPresenca`, `Tipo_de_marcacao`) VALUES (%s, %s, %s, %s)"
-                    cursor.execute(sql, (data_atual, id_funcionario, idPresenca, tipo_de_marcacao))
+                    sql = "INSERT INTO Momento_de_marcacao (`idFuncionario`, `idPresenca`) VALUES (%s, %s)"
+                    cursor.execute(sql, ( id_funcionario, idPresenca))
                     connection.commit()
 
                 return "Dados inseridos"
@@ -252,8 +255,8 @@ def marcar_presenca(idAluno, selected_case):
                 
 
                 with connection.cursor() as cursor:
-                    sql = "INSERT INTO Momento_de_marcacao (`Data de marcacao`, `idFuncionario`, `idPresenca`, `Tipo_de_marcacao`) VALUES ( %s, %s, %s, %s)"
-                    cursor.execute(sql, (data_atual, id_funcionario, idPresenca_parsed, tipo_de_marcacao))
+                    sql = "INSERT INTO Momento_de_marcacao (`idFuncionario`, `idPresenca`) VALUES ( %s, %s)"
+                    cursor.execute(sql, ( id_funcionario, idPresenca_parsed, ))
                     connection.commit()
 
                 return "Dados inseridos"
@@ -273,25 +276,32 @@ def marcar_presenca(idAluno, selected_case):
                 data = request.json 
                 Local_subida_escola_casa = data.get("Local_subida_escola_casa")
                 Tipo_de_marcacao_subida_escola_casa = data.get("Tipo_de_marcacao_subida_escola_casa")
-                idPresenca = data["idPresenca"]
+                data_atual = datetime.date.today()
+                data_formatada = data_atual.strftime('%Y-%m-%d')
+                
+                query = "SELECT idPresenca FROM Presenca WHERE idAluno = %s AND Data_presenca = %s"
+                cursor = connection.cursor()
+                cursor.execute(query, (idAluno, data_formatada))
+                idPresenca = cursor.fetchone()
+                idPresenca_pego = idPresenca.get("idPresenca")  # Obtém o valor da chave "idAluno"
+                idPresenca_parsed = int(idPresenca_pego)
                 
                 
 
                 with connection.cursor() as cursor:
                     sql = "UPDATE Presenca SET `Local_subida_escola_casa` = %s, `Tipo_de_marcacao_subida_escola_casa` = %s WHERE `idPresenca` = %s"
-                    cursor.execute(sql, (Local_subida_escola_casa, Tipo_de_marcacao_subida_escola_casa, idPresenca))
+                    cursor.execute(sql, (Local_subida_escola_casa, Tipo_de_marcacao_subida_escola_casa, idPresenca_parsed))
                     connection.commit()
 
                 data_atual = datetime.date.today()
-                tipo_de_marcacao = data.get("tipo_de_marcacao")
-                local = data.get("local")
+                
                 id_funcionario = data.get("id_funcionario")
 
                 
 
                 with connection.cursor() as cursor:
-                    sql = "INSERT INTO Momento_de_marcacao (`Data de marcacao`, `idFuncionario`, `idPresenca`, `Tipo_de_marcacao`, `Local`) VALUES (%s, %s, %s, %s, %s)"
-                    cursor.execute(sql, (data_atual, id_funcionario, idPresenca, tipo_de_marcacao, local))
+                    sql = "INSERT INTO Momento_de_marcacao ( `idFuncionario`, `idPresenca`) VALUES ( %s, %s)"
+                    cursor.execute(sql, ( id_funcionario, idPresenca))
                     connection.commit()
 
                 return "Dados inseridos"
@@ -307,25 +317,32 @@ def marcar_presenca(idAluno, selected_case):
                 data = request.json 
                 Local_descida_escola_casa = data.get("Local_descida_escola_casa")
                 Tipo_de_marcacao_descida_escola_casa = data.get("Tipo_de_marcacao_descida_escola_casa")
-                idPresenca = data["idPresenca"]
+                data_atual = datetime.date.today()
+                data_formatada = data_atual.strftime('%Y-%m-%d')
+                
+                query = "SELECT idPresenca FROM Presenca WHERE idAluno = %s AND Data_presenca = %s"
+                cursor = connection.cursor()
+                cursor.execute(query, (idAluno, data_formatada))
+                idPresenca = cursor.fetchone()
+                idPresenca_pego = idPresenca.get("idPresenca")  # Obtém o valor da chave "idAluno"
+                idPresenca_parsed = int(idPresenca_pego)
                 
                 
 
                 with connection.cursor() as cursor:
                     sql = "UPDATE Presenca SET `Local_descida_escola_casa` = %s, `Tipo_de_marcacao_descida_escola_casa` = %s WHERE `idPresenca` = %s"
-                    cursor.execute(sql, (Local_descida_escola_casa, Tipo_de_marcacao_descida_escola_casa, idPresenca))
+                    cursor.execute(sql, (Local_descida_escola_casa, Tipo_de_marcacao_descida_escola_casa, idPresenca_parsed))
                     connection.commit()
 
                 data_atual = datetime.date.today()
-                tipo_de_marcacao = data.get("tipo_de_marcacao")
-                local = data.get("local")
-                id_funcionario = data.get("id_funcionario")
+                
+                id_funcionario = data.get("idFuncionario")
 
                 
 
                 with connection.cursor() as cursor:
-                    sql = "INSERT INTO Momento_de_marcacao (`Data de marcacao`, `idFuncionario`, `idPresenca`, `Tipo_de_marcacao`, `Local`) VALUES (%s, %s, %s, %s, %s)"
-                    cursor.execute(sql, (data_atual, id_funcionario, idPresenca, tipo_de_marcacao, local))
+                    sql = "INSERT INTO Momento_de_marcacao ( `idFuncionario`, `idPresenca`) VALUES (%s, %s)"
+                    cursor.execute(sql, ( id_funcionario, idPresenca))
                     connection.commit()
 
                 return "Dados inseridos"

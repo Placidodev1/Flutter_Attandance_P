@@ -159,11 +159,11 @@ def marcar_presenca(idAluno, selected_case):
 
 
 
-                # # data_formatada = data_atual.strftime('%Y-%m-%d')
-                # query = "SELECT idPresenca FROM Presenca WHERE idAluno = %s AND Data_presenca = %s"
-                # cursor = connection.cursor()
-                # cursor.execute(query, (idAluno, data_formatada))
-                # resultado = cursor.fetchone()
+                data_formatada = data_atual.strftime('%Y-%m-%d')
+                query = "SELECT idPresenca FROM Presenca WHERE idAluno = %s AND Data_presenca = %s"
+                cursor = connection.cursor()
+                cursor.execute(query, (idAluno, data_formatada))
+                resultado = cursor.fetchone()
                 return resultado
             except pymysql.err.InterfaceError as e:
                 return(f"Erro de interface: {e}")
@@ -202,7 +202,7 @@ def marcar_presenca(idAluno, selected_case):
                 data_atual = datetime.date.today()
                 tipo_de_marcacao = data.get("tipo_de_marcacao")
                 local = data.get("local")
-                id_funcionario = data.get("id_funcionario")
+                id_funcionario = data.get("idFuncionario")
 
                 
 
