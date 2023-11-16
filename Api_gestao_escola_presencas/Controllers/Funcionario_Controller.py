@@ -38,3 +38,5 @@ def inserir_funcionario_controller():
         #     return jsonify({"error": "Erro ao inserir o funcionário", "code": 500}), 500
     except Exception as ex:
         return jsonify({"error": str(ex), "code": 500}), 500
+    
+    

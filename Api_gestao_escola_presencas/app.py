@@ -1,7 +1,8 @@
 from flask import  Flask, request, jsonify
+from flask_jwt_extended import JWTManager
 from flask_smorest import Api
 from flask_sqlalchemy import SQLAlchemy
-from Controllers import blpAluno, blpCArinha, blpPresenca, BlpFuncionario
+from Controllers import blpAluno, blpCArinha, blpPresenca, BlpFuncionario, BlpLogin
 import asyncio, aiohttp
 
 app = Flask(__name__)
@@ -11,6 +12,10 @@ app.register_blueprint(BlpFuncionario)
 app.register_blueprint(blpAluno)
 app.register_blueprint(blpCArinha)
 app.register_blueprint(blpPresenca)
+app.register_blueprint(BlpLogin)
+app.config['JWT_SECRET_KEY'] = 'sua_chave_secreta_aqui'  # Substitua pela sua chave secreta
+jwt = JWTManager(app)
+
 
 app.run(debug=True)
 
