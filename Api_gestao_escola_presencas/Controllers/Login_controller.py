@@ -8,13 +8,14 @@ blp = Blueprint("Login",__name__)
 
 @blp.route("/Login", methods=['POST'])
 def login():
+            
             usuario = request.json
             cursor = connection.cursor()
-            querry = """SELECT id_Carrinha, Senha, idFuncionario, Email, Nome FROM funcionario WHERE(Email = %s AND Senha = %s)"""
-            cursor.execute(querry,( usuario['email'], usuario['password'])
-                                )
+            query = """SELECT id_Carrinha, Senha, idFuncionario, Email, Nome FROM funcionario WHERE (Email = %s AND Senha = %s)"""
+            cursor.execute(query,( usuario['email'], int(usuario['password'])))
             user = cursor.fetchone()
             cursor.close()
+            print(user)
             
             # expira
             exptime = datetime.now() + timedelta(minutes=15)
@@ -24,11 +25,12 @@ def login():
             
 
             if user is None:
-                return jsonify({"msg": "Bad username or password", "code":401})
-            id = int(user['idFuncionario'])
-            Carinha= user['id_Carrinha']
-            user_name =  user['Nome']
-            access_token = create_access_token(identity=id)    
+                return jsonify({"msg": "Username ou password incorrecto", "code":401})
+            else:
+                id = int(user['idFuncionario'])
+                Carinha= user['id_Carrinha']
+                user_name =  user['Nome']
+                access_token = create_access_token(identity=id)    
 
-            return jsonify({"token": access_token, "id":user_name, "code":200, "Carinha": Carinha, "nome_user":user_name  } )
+                return jsonify({"token": access_token, "id":user_name, "code":200, "Carinha": Carinha, "nome_user":user_name  } )
             

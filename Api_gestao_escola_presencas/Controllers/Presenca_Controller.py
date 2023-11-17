@@ -160,7 +160,12 @@ def marcar_presenca(idAluno, selected_case):
                 cursor = connection.cursor()
                 cursor.execute(query, (idAluno, data_formatada))
                 resultado = cursor.fetchone()
-                return resultado
+                print(resultado)
+                if resultado is None:
+                    return jsonify({"msg": "Bad username or password", "code":401,"resultado": None })
+                return jsonify({"code": 200, "resultado": resultado})
+            
+
             except pymysql.err.InterfaceError as e:
                 return(f"Erro de interface: {e}")
             except pymysql.err.DataError as e:
@@ -169,6 +174,46 @@ def marcar_presenca(idAluno, selected_case):
                 return f"Erro de integridade: {e}"
             except Exception as e:
                 return(f"Erro desconhecido: {e}")
+            finally: 
+                return jsonify({"code": 200, "resultado": resultado})
+    def marcar_presenca_casa_escola_ida_atualizacao(PresencaCriada):
+        
+        try:
+                
+                data = request.json
+                 
+                Local_subida_casa_escola = data.get("Local_subida_casa_escola")
+                print(Local_subida_casa_escola)
+                Tipo_de_marcacao_subida_casa_escola = data.get("Tipo_de_marcacao_subida_casa_escola")
+                
+
+                with connection.cursor() as cursor:
+                    sql = "UPDATE Presenca SET `Local_subida_casa_escola` = %s, `Tipo_de_marcacao_subida_casa_escola` = %s WHERE `idPresenca` = %s"
+                    cursor.execute(sql, (Local_subida_casa_escola, Tipo_de_marcacao_subida_casa_escola, PresencaCriada))
+                    connection.commit()
+
+                 # Verifique o número de linhas afetadas
+                num_linhas_afetadas = cursor.rowcount
+
+                
+
+                data_atual = datetime.date.today()
+                tipo_de_marcacao = data.get("tipo_de_marcacao")
+                local = data.get("local")
+                id_funcionario = data.get("idFuncionario")
+
+                
+
+                with connection.cursor() as cursor:
+                    sql = "INSERT INTO Momento_de_marcacao (`idFuncionario`, `idPresenca`) VALUES (%s, %s)"
+                    cursor.execute(sql, ( id_funcionario, PresencaCriada))
+                    connection.commit()
+                if num_linhas_afetadas > 0:
+                    # return jsonify({"msg":"Dados inseridos", "code": 200, "PresencaCriada":PresencaCriada})
+                    return jsonify({"code":200, "msg": "Dados inseridos com sucesso"})
+        except Exception as e:
+            return str(e)        
+    
             
             
 
@@ -181,36 +226,22 @@ def marcar_presenca(idAluno, selected_case):
             return "Presença já registrada" 
         elif Presenca is None :
             # return "niasdn"
+            print("Tentativa1")
             PresencaCriada = Criar_presenca()
+            json_data = PresencaCriada.get_json()
+
+            # Verifique se a chave "resultado" está presente e obtenha o valor associado a "idPresenca"
+            if "resultado" in json_data:
+                idPresenca = json_data["resultado"].get("idPresenca")
+                print(idPresenca)
+            else:
+                return jsonify({"msg": "Presenca inexistente"})
+            if(PresencaCriada is not None):
+                Dadosatualizacao = marcar_presenca_casa_escola_ida_atualizacao(idPresenca)
             # return PresencaCriada
-            try:
-                data = request.json 
-                Local_subida_casa_escola = data.get("Local_subida_casa_escola")
-                Tipo_de_marcacao_subida_casa_escola = data.get("Tipo_de_marcacao_subida_casa_escola")
-                idPresenca = PresencaCriada["idPresenca"]
-                
-                
-
-                with connection.cursor() as cursor:
-                    sql = "UPDATE Presenca SET `Local_subida_casa_escola` = %s, `Tipo_de_marcacao_subida_casa_escola` = %s WHERE `idPresenca` = %s"
-                    cursor.execute(sql, (Local_subida_casa_escola, Tipo_de_marcacao_subida_casa_escola, idPresenca))
-                    connection.commit()
-
-                data_atual = datetime.date.today()
-                tipo_de_marcacao = data.get("tipo_de_marcacao")
-                local = data.get("local")
-                id_funcionario = data.get("idFuncionario")
-
-                
-
-                with connection.cursor() as cursor:
-                    sql = "INSERT INTO Momento_de_marcacao (`idFuncionario`, `idPresenca`) VALUES (%s, %s)"
-                    cursor.execute(sql, ( id_funcionario, idPresenca))
-                    connection.commit()
-
-                return "Dados inseridos"
-            except Exception as e:
-                return str(e)
+            print("Tentativa2")
+            return Dadosatualizacao
+            
             
             
     # Marca presenca do trajecto  casa a escola descida
@@ -362,8 +393,10 @@ def marcar_presenca(idAluno, selected_case):
 
     
     
-
-    return jsonify({"Resultado": result, "Presenca":Presenca})
+    if(Presenca is None):
+        return jsonify({"code":200, "msg": "Sucesso"})
+    else:
+        return jsonify({"Presenca":Presenca, "code":400, "msg": "Dados ja existem"})
 
 
     
