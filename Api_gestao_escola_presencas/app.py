@@ -2,12 +2,12 @@ from flask import  Flask, request, jsonify
 from flask_jwt_extended import JWTManager
 from flask_smorest import Api
 from flask_sqlalchemy import SQLAlchemy
-from Controllers import blpAluno, blpCArinha, blpPresenca, BlpFuncionario, BlpLogin
+from Controllers import blpAluno, blpCArinha, blpPresenca, BlpFuncionario, BlpLogin, BlpVerificadordepresenca
 import asyncio, aiohttp
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
-
+app.register_blueprint(BlpVerificadordepresenca)
 app.register_blueprint(BlpFuncionario)
 app.register_blueprint(blpAluno)
 app.register_blueprint(blpCArinha)

@@ -1,6 +1,7 @@
+import 'package:Registoflutterattandance/pages/componentes/my_button.dart';
+import 'package:Registoflutterattandance/pages/componentes/myt_textfield.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterattandance/pages/componentes/my_button.dart';
-import 'package:flutterattandance/pages/componentes/myt_textfield.dart';
+
 
 class LoginCapturaDeDados extends StatelessWidget {
   

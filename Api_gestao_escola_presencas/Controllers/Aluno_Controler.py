@@ -48,9 +48,9 @@ def get_all_alunos():
 @blp.route("/Alunos_carinha/<int:nrcarinha>", methods=["GET"])
 def get_all_alunos_carinha(nrcarinha):
     try:
-        query = "SELECT * FROM aluno where nrcarinha = %s;"
-        cursor = connection.cursor(nrcarinha)
-        cursor.execute(query)
+        query = "SELECT * FROM aluno where id_Carrinha = %s;"
+        cursor = connection.cursor()
+        cursor.execute(query, nrcarinha)
         aluno = cursor.fetchall()
         cursor.close()
 

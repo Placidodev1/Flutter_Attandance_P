@@ -3,15 +3,13 @@ com.example.flutterattandance.app-jetified-annotation-experimental-1.1.0-1 C:\Us
 com.example.flutterattandance.app-core-1.6.0-2 C:\Users\Placido Nhapulo\.gradle\caches\transforms-3\7e9df2ac2213a6bd3cef0f2f27870d79\transformed\core-1.6.0\res
 com.example.flutterattandance.app-jetified-window-java-1.0.0-beta04-3 C:\Users\Placido Nhapulo\.gradle\caches\transforms-3\ae81e06d24c799147c26814497a2a305\transformed\jetified-window-java-1.0.0-beta04\res
 com.example.flutterattandance.app-webkit-1.5.0-4 C:\Users\Placido Nhapulo\.gradle\caches\transforms-3\d6b63b7e37fd26410cf082b353157626\transformed\webkit-1.5.0\res
-com.example.flutterattandance.app-debug-5 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Versao_registro\android\app\src\debug\res
-com.example.flutterattandance.app-main-6 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Versao_registro\android\app\src\main\res
-com.example.flutterattandance.app-pngs-7 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Versao_registro\build\app\generated\res\pngs\debug
-com.example.flutterattandance.app-resValues-8 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Versao_registro\build\app\generated\res\resValues\debug
-com.example.flutterattandance.app-rs-9 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Versao_registro\build\app\generated\res\rs\debug
-com.example.flutterattandance.app-mergeDebugResources-10 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Versao_registro\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
-com.example.flutterattandance.app-mergeDebugResources-11 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Versao_registro\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
-com.example.flutterattandance.app-merged_res-12 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Versao_registro\build\app\intermediates\merged_res\debug
-com.example.flutterattandance.app-packaged_res-13 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Versao_registro\build\camera_android\intermediates\packaged_res\debug
-com.example.flutterattandance.app-packaged_res-14 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Versao_registro\build\flutter_plugin_android_lifecycle\intermediates\packaged_res\debug
-com.example.flutterattandance.app-packaged_res-15 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Versao_registro\build\path_provider_android\intermediates\packaged_res\debug
-com.example.flutterattandance.app-packaged_res-16 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Versao_registro\build\webview_flutter_android\intermediates\packaged_res\debug
+com.example.flutterattandance.app-debug-5 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Vr\android\app\src\debug\res
+com.example.flutterattandance.app-main-6 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Vr\android\app\src\main\res
+com.example.flutterattandance.app-pngs-7 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Vr\build\app\generated\res\pngs\debug
+com.example.flutterattandance.app-resValues-8 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Vr\build\app\generated\res\resValues\debug
+com.example.flutterattandance.app-rs-9 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Vr\build\app\generated\res\rs\debug
+com.example.flutterattandance.app-mergeDebugResources-10 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Vr\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
+com.example.flutterattandance.app-mergeDebugResources-11 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Vr\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+com.example.flutterattandance.app-merged_res-12 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Vr\build\app\intermediates\merged_res\debug
+com.example.flutterattandance.app-packaged_res-13 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Vr\build\path_provider_android\intermediates\packaged_res\debug
+com.example.flutterattandance.app-packaged_res-14 C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Vr\build\webview_flutter_android\intermediates\packaged_res\debug

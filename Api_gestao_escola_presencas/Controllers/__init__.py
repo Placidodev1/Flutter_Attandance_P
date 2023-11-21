@@ -3,3 +3,4 @@ from Controllers.Carinha_Contrer import blp as blpCArinha
 from Controllers.Presenca_Controller import blp as blpPresenca
 from Controllers.Funcionario_Controller import blp as BlpFuncionario
 from Controllers.Login_controller import blp as BlpLogin
+from Controllers.Verificador_de_momento import blp as BlpVerificadordepresenca

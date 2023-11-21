@@ -1,7 +1,7 @@
+import 'package:Registoflutterattandance/pages/Funcionario_captura_de_dados/Pagina_principal.dart';
+import 'package:Registoflutterattandance/pages/Funcionario_captura_de_dados/Perguntas_frequentes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterattandance/pages/Funcionario_captura_de_dados/Pagina_principal.dart';
-import 'package:flutterattandance/pages/Funcionario_captura_de_dados/Perguntas_frequentes.dart';
-import 'package:flutterattandance/pages/Funcionario_captura_de_dados/Registrar_Dados.dart';
+
 
 class MeusBotoes extends StatelessWidget {
   final Color? corprimaria;

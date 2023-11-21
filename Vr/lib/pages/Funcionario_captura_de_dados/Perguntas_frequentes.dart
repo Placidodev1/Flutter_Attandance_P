@@ -1,10 +1,7 @@
+import 'package:Registoflutterattandance/pages/componentes/Botoes.dart';
+import 'package:Registoflutterattandance/pages/componentes/perguntas.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterattandance/pages/componentes/dropdown.dart';
-import 'package:flutterattandance/pages/componentes/Botoes.dart';
 
-import 'package:flutterattandance/pages/componentes/detalhes_da_presenca.dart';
-import 'package:flutterattandance/pages/componentes/my_button.dart';
-import 'package:flutterattandance/pages/componentes/perguntas.dart';
 class PerguntasFrequentes extends StatelessWidget {
  
 

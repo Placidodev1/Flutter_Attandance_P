@@ -1,6 +1,6 @@
+import 'package:Registoflutterattandance/pages/Funcionario_captura_de_dados/login.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterattandance/pages/Funcionario_captura_de_dados/Pagina_principal.dart';
-import 'package:flutterattandance/pages/Funcionario_captura_de_dados/login.dart';
+
 void main() {
   runApp(const MyApp());
 }
