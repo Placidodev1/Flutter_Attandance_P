@@ -39,40 +39,45 @@ def retorna_dia_aluno(date, idaluno):
 # Return all of the presenca of the aluno
 @blp.route("/Presenca_aluno/<string:filter_type>/<int:idaluno>", methods=["GET"])
 def get_Presenca_aluno(filter_type, idaluno):
-    sql_filtros = "1=1"
-    if "dia" in filter_type:
-        if filter_type == "dia":
-            sql_filtros += f""" AND DAY(Data_presenca) = DAY(NOW()) """
-            
-    if "semana" in filter_type:
-        if filter_type == "semana":
-            sql_filtros += f""" AND WEEK(Data_presenca) = WEEK(NOW()) """
+    try:
+        sql_filtros = "1=1"
+        if "dia" in filter_type:
+            if filter_type == "dia":
+                sql_filtros += f""" AND DAY(Data_presenca) = DAY(NOW()) """
+                
+        if "semana" in filter_type:
+            if filter_type == "semana":
+                sql_filtros += f""" AND WEEK(Data_presenca) = WEEK(NOW()) """
 
-    if "mes" in filter_type:
-        if filter_type == "mes":
-            sql_filtros += f""" AND MONTH(Data_presenca) = MONTH(NOW()) """
-            
-            
-    if "ano" in filter_type:
-        if filter_type == "ano":
-            sql_filtros += f""" AND YEAR(Data_presenca)  = YEAR(NOW()) """
+        if "mes" in filter_type:
+            if filter_type == "mes":
+                sql_filtros += f""" AND MONTH(Data_presenca) = MONTH(NOW()) """
+                
+                
+        if "ano" in filter_type:
+            if filter_type == "ano":
+                sql_filtros += f""" AND YEAR(Data_presenca)  = YEAR(NOW()) """
 
-    if "todos" in filter_type:
-        if filter_type == "todos":
-            querytodos = """SELECT * FROM presenca WHERE idAluno = %s"""
-            cursor = connection.cursor()
-            cursor.execute(querytodos, idaluno)
-            presenca1 = cursor.fetchall()
-            cursor.close
-            return jsonify({"data": presenca1})
-                    
-    query = f"""SELECT * FROM presenca WHERE   {sql_filtros} AND idAluno = %s  ;"""
-    cursor = connection.cursor()
-    cursor.execute(query, idaluno)
-    presenca = cursor.fetchall()
-    cursor.close()
+        if "todos" in filter_type:
+            if filter_type == "todos":
+                querytodos = """SELECT * FROM presenca WHERE idAluno = %s"""
+                cursor = connection.cursor()
+                cursor.execute(querytodos, idaluno)
+                presenca1 = cursor.fetchall()
+                cursor.close
+                return jsonify({"data": presenca1})
+                        
+        query = f"""SELECT * FROM presenca WHERE   {sql_filtros} AND idAluno = %s  ;"""
+        cursor = connection.cursor()
+        cursor.execute(query, idaluno)
+        presenca = cursor.fetchall()
+        cursor.close()
 
-    return jsonify({"data": presenca})
+        return jsonify({"data": presenca})
+
+    except Exception as e:
+    
+        return jsonify({"error": str(e)})
 
 
 #  Return the presenca depending wheather is a day, week, niuth, year or all
@@ -392,7 +397,7 @@ def marcar_presenca(idAluno, selected_case):
     
 
     
-    
+    print(Presenca)
     if(Presenca is None):
         return jsonify({"code":200, "msg": "Sucesso"})
     else:

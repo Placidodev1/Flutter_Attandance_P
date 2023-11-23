@@ -102,3 +102,20 @@ def get_1_Barcode_aluno( Barcode):
     if aluno_especifico is None:
         abort(404)
     return jsonify({"data": aluno_especifico })
+
+
+@blp.route("/Aluno_especifico_QRcode/<string:QRCode>")
+
+#   LISTAR unico aluno 
+def get_1_QRCode_aluno(QRCode):
+    try:
+        query = """SELECT * FROM aluno WHERE QRCode = %s;"""
+        cursor = connection.cursor()
+        cursor.execute(query, QRCode)
+        aluno_especifico = cursor.fetchall()
+        cursor.close()
+    except Exception as ex:
+        return jsonify({"message":str(ex),"code":500})
+    if aluno_especifico is None:
+        abort(404)
+    return jsonify({"data": aluno_especifico })
