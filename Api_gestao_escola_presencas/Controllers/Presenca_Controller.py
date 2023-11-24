@@ -4,6 +4,7 @@ import pymysql
 from db import connection   
 import datetime
 import logging
+import asyncio
 
 blp = Blueprint("presenca", __name__)
 
@@ -405,40 +406,58 @@ def marcar_presenca(idAluno, selected_case):
 
 
     
-@blp.route("/marcar_presenca_a_todos/<int:marcadordefalta>", methods=['POST'])
-def marcar_presenca_a_todos(marcadordefalta):
+@blp.route("/marcar_presenca_a_todos/<int:marcadordefalta>/<int:idcarinha>", methods=['POST'])
+async def marcar_presenca_a_todos(marcadordefalta, idcarinha):
     
     # Instacia a presenca com dados basicos e o resto deixa null
     
 
     try:
         if marcadordefalta == 1:
-                query = """SELECT idAluno FROM aluno"""
+                query = """SELECT idAluno FROM aluno WHERE Id_carrinha = %s """
                 cursor = connection.cursor()
-                cursor.execute(query)
+                cursor.execute(query, idcarinha)
                 idAlunoquery = cursor.fetchall()
                 
             
-                def Criar_presenca(idAluno):
-            
-                    # data = request.json
-                    data_atual = datetime.date.today()
-                    data_formatada = data_atual.strftime('%Y-%m-%d')
+                async def Criar_presenca (idAluno):
+                    try:
+                        # data = request.json
+                        data_atual = datetime.date.today()
+                        data_formatada = data_atual.strftime('%Y-%m-%d')
+                        
+                        # idPresenca = 169
+
                     
-                    idPresenca = 169
+                        query = """INSERT INTO Presenca (idAluno,Data_presenca) VALUES (%s, %s)"""
+                        cursor = connection.cursor()
+                        cursor.execute(query, (idAluno, data_formatada, ))
+                        commit= connection.commit()
+                        cursor.close()
+                        
+                    except Exception as e:
+                        return str(e)
 
                 
-                    query = """INSERT INTO Presenca (idAluno,Data_presenca, idPresenca) VALUES (%s, %s, %s)"""
-                    cursor = connection.cursor()
-                    cursor.execute(query, (idAluno, data_formatada, idPresenca))
-                    commit= connection.commit()
-                    cursor.close()
-                
-                def Marcar_falta_ida_escola_casa(data_formatada, idAluno):
-                    with connection.cursor() as cursor:
-                        sql = "UPDATE Presenca SET `Local_subida_casa_escola` = %s, `Tipo_de_marcacao_subida_casa_escola` = %s WHERE `idPresenca` = %s  "
-                        cursor.execute(sql, ("faltou", "nenhuma", 165))
-                        connection.commit()
+                async def Marcar_falta_ida_escola_casa(data_formatada, idAluno):
+                    try: 
+                        query = "SELECT idPresenca FROM Presenca WHERE idAluno = %s AND Data_presenca = %s"
+                        cursor = connection.cursor()
+                        cursor.execute(query, (idAluno, data_formatada))
+                        idPresenca = cursor.fetchone()
+                        idPresenca_pego = idPresenca.get("idPresenca")
+                        idPresenca_parsed = int(idPresenca_pego)
+
+                        print(idPresenca_parsed)
+
+                        with connection.cursor() as cursor:
+                            sql = "UPDATE Presenca SET `Local_subida_casa_escola` = %s, `Tipo_de_marcacao_subida_casa_escola` = %s WHERE `idPresenca` = %s  "
+                            cursor.execute(sql, ("faltou", "nenhuma", idPresenca_parsed))
+                            connection.commit()
+                    except Exception as e:
+                        return str(e)
+        
+        
             
                 for (aluno) in idAlunoquery:
                         # Para cada ID de aluno, verifique se há presença associada a ele.
@@ -453,9 +472,176 @@ def marcar_presenca_a_todos(marcadordefalta):
                         resultado = cursor.fetchone()
                         
                         if resultado is None:
-                            # Criar_presenca(idAluno)
-                            Marcar_falta_ida_escola_casa(data_formatada, idAluno)
+                            await Criar_presenca(idAluno)
+                            await Marcar_falta_ida_escola_casa(data_formatada, idAluno)
                             # return resultado
+
+
+
+
+
+        if marcadordefalta == 2:
+                query = """SELECT idAluno FROM aluno WHERE Id_carrinha = %s """
+                cursor = connection.cursor()
+                cursor.execute(query, idcarinha)
+                idAlunoquery = cursor.fetchall()
+                
+ 
+
+                
+                async def Marcar_falta_descida_escola_casa(data_formatada, idAluno):
+                    print(idAluno)
+                    try: 
+                        query = "SELECT idPresenca FROM Presenca WHERE idAluno = %s AND Data_presenca = %s"
+                        cursor = connection.cursor()
+                        cursor.execute(query, (idAluno, data_formatada))
+                        idPresenca = cursor.fetchone()
+                        idPresenca_pego = idPresenca.get("idPresenca")
+                        idPresenca_parsed = int(idPresenca_pego)
+
+                        print(idPresenca_parsed)
+
+                        with connection.cursor() as cursor:
+                            sql = "UPDATE Presenca SET `Local_descida_casa_escola` = %s, `Tipo_de_marcacao_descida_casa_escola` = %s WHERE `idPresenca` = %s  "
+                            cursor.execute(sql, ("faltou", "nenhuma", idPresenca_parsed))
+                            connection.commit()
+                    except Exception as e:
+                        return str(e)
+        
+        
+            
+                for (aluno) in idAlunoquery:
+                        # Para cada ID de aluno, verifique se há presença associada a ele.
+                        data_atual = datetime.date.today()
+                        data_formatada = data_atual.strftime('%Y-%m-%d')
+                        idAluno = aluno.get("idAluno")  # Obtém o valor da chave "idAluno"
+                        if idAluno is not None:
+                            idAluno = int(idAluno)
+                        query = "SELECT Local_descida_casa_escola FROM presenca WHERE idAluno = %s AND Data_presenca = %s"
+                        
+                        cursor.execute(query, (idAluno, data_formatada))
+                        resultado = cursor.fetchone()
+                        
+                        if resultado['Local_descida_casa_escola'] is None:
+                            
+                            # await Criar_presenca(idAluno)
+                            await Marcar_falta_descida_escola_casa(data_formatada, idAluno)
+                            # return resultado
+                            
+
+
+
+
+          
+        if marcadordefalta == 3:
+                query = """SELECT idAluno FROM aluno WHERE Id_carrinha = %s """
+                cursor = connection.cursor()
+                cursor.execute(query, idcarinha)
+                idAlunoquery = cursor.fetchall()
+                
+ 
+
+                
+                async def Marcar_falta_subida_casa_escola(data_formatada, idAluno):
+                    print(idAluno)
+                    try: 
+                        query = "SELECT idPresenca FROM Presenca WHERE idAluno = %s AND Data_presenca = %s"
+                        cursor = connection.cursor()
+                        cursor.execute(query, (idAluno, data_formatada))
+                        idPresenca = cursor.fetchone()
+                        idPresenca_pego = idPresenca.get("idPresenca")
+                        idPresenca_parsed = int(idPresenca_pego)
+
+                        print(idPresenca_parsed)
+
+                        with connection.cursor() as cursor:
+                            sql = "UPDATE Presenca SET `Local_subida_escola_casa` = %s, `Tipo_de_marcacao_subida_escola_casa` = %s WHERE `idPresenca` = %s  "
+                            cursor.execute(sql, ("faltou", "nenhuma", idPresenca_parsed))
+                            connection.commit()
+                    except Exception as e:
+                        return str(e)
+        
+        
+            
+                for (aluno) in idAlunoquery:
+                        # Para cada ID de aluno, verifique se há presença associada a ele.
+                        data_atual = datetime.date.today()
+                        data_formatada = data_atual.strftime('%Y-%m-%d')
+                        idAluno = aluno.get("idAluno")  # Obtém o valor da chave "idAluno"
+                        if idAluno is not None:
+                            idAluno = int(idAluno)
+                        query = "SELECT Local_subida_escola_casa FROM presenca WHERE idAluno = %s AND Data_presenca = %s"
+                        
+                        cursor.execute(query, (idAluno, data_formatada))
+                        resultado = cursor.fetchone()
+                        
+                        if resultado['Local_subida_escola_casa'] is None:
+                            
+                            # await Criar_presenca(idAluno)
+                            await Marcar_falta_subida_casa_escola(data_formatada, idAluno)
+                            # return resultado
+              
+
+
+
+
+
+        
+        if marcadordefalta == 4:
+                query = """SELECT idAluno FROM aluno WHERE Id_carrinha = %s """
+                cursor = connection.cursor()
+                cursor.execute(query, idcarinha)
+                idAlunoquery = cursor.fetchall()
+                
+ 
+
+                
+                async def Marcar_falta_descida_casa_escola(data_formatada, idAluno):
+                    print(idAluno)
+                    try: 
+                        query = "SELECT idPresenca FROM Presenca WHERE idAluno = %s AND Data_presenca = %s"
+                        cursor = connection.cursor()
+                        cursor.execute(query, (idAluno, data_formatada))
+                        idPresenca = cursor.fetchone()
+                        idPresenca_pego = idPresenca.get("idPresenca")
+                        idPresenca_parsed = int(idPresenca_pego)
+
+                        print(idPresenca_parsed)
+
+                        with connection.cursor() as cursor:
+                            sql = "UPDATE Presenca SET `Local_descida_escola_casa` = %s, `Tipo_de_marcacao_descida_escola_casa` = %s WHERE `idPresenca` = %s  "
+                            cursor.execute(sql, ("faltou", "nenhuma", idPresenca_parsed))
+                            connection.commit()
+                    except Exception as e:
+                        return str(e)
+        
+        
+            
+                for (aluno) in idAlunoquery:
+                        # Para cada ID de aluno, verifique se há presença associada a ele.
+                        data_atual = datetime.date.today()
+                        data_formatada = data_atual.strftime('%Y-%m-%d')
+                        idAluno = aluno.get("idAluno")  # Obtém o valor da chave "idAluno"
+                        if idAluno is not None:
+                            idAluno = int(idAluno)
+                        query = "SELECT Local_descida_escola_casa FROM presenca WHERE idAluno = %s AND Data_presenca = %s"
+                        
+                        cursor.execute(query, (idAluno, data_formatada))
+                        resultado = cursor.fetchone()
+                        
+                        if resultado['Local_descida_escola_casa'] is None:
+                            
+                            # await Criar_presenca(idAluno)
+                            await Marcar_falta_descida_casa_escola(data_formatada, idAluno)
+                            # return resultado
+
+
+
+    except Exception as e:
+        return str(e)
+    
     finally:
         cursor.close()
-    return "Res"
+
+        return jsonify({"code":200, "msg": "Sucesso"})
+
