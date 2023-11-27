@@ -25,7 +25,7 @@ def VerificarMomento(selected_case, idcarinha):
 
                 
                 query = """
-                    SELECT p.Local_subida_escola_casa
+                    SELECT p.Local_subida_casa_escola
                     FROM Presenca p
                     JOIN Aluno a ON p.idaluno = a.idaluno
                     WHERE a.Id_carrinha = %s AND p.Data_presenca = %s
@@ -57,11 +57,11 @@ def VerificarMomento(selected_case, idcarinha):
                 cursor = connection.cursor()
                 cursor.execute(query, (idcarinha))
                 alunos = cursor.fetchall()
-
+                
 
                 
                 query = """
-                    SELECT p.Local_subida_escola_casa
+                    SELECT p.Local_subida_casa_escola
                     FROM Presenca p
                     JOIN Aluno a ON p.idaluno = a.idaluno
                     WHERE a.Id_carrinha = %s AND p.Data_presenca = %s
@@ -69,7 +69,7 @@ def VerificarMomento(selected_case, idcarinha):
                 cursor = connection.cursor()
                 cursor.execute(query, (idcarinha, data_formatada))
                 locaisMomentoAnterior = cursor.fetchall()
-                print(locaisMomentoAnterior)
+                # print(locaisMomentoAnterior)
 
                 
 
@@ -78,7 +78,7 @@ def VerificarMomento(selected_case, idcarinha):
                 data_atual = datetime.date.today()
                 data_formatada = data_atual.strftime('%Y-%m-%d')
                 query = """
-                    SELECT p.Local_descida_escola_casa
+                    SELECT p.Local_descida_casa_escola
                     FROM Presenca p
                     JOIN Aluno a ON p.idaluno = a.idaluno
                     WHERE a.Id_carrinha = %s AND p.Data_presenca = %s
@@ -86,28 +86,37 @@ def VerificarMomento(selected_case, idcarinha):
                 cursor = connection.cursor()
                 cursor.execute(query, (idcarinha, data_formatada))
                 locais = cursor.fetchall()
-                print(locais)
-                print("VVBJHBBJH")
+                # print(locais)
+                # print(locais)
+                # print("VVBJHBBJH")
                 # print(locais)
                 # Verificar se todos os locais estão preenchidos
                 todos_preenchidos = True
-                
+                print(todos_preenchidos)
 
                 for local in locais:
-                    print(local)
-                    print("ahdad")
-                    if local["Local_descida_escola_casa"] is None:
-                        print(local)
-                        print("ausdna")
-                        todos_preenchidos = False
-                        break  # Se encontrar pelo menos um None, podemos parar a verificação
+                    # print(local)
+                    valor = local['Local_descida_casa_escola']
+                    print(valor)
 
+                    # print(local["Local_descida_escola_casa"])
+                    # print("ahdad")
+                    if valor is None:
+                        print(valor)
+                        # print("ausdna")
+                        todos_preenchidos = False
+                        # print(todos_preenchidos)
+                        break  # Se encontrar pelo menos um None, podemos parar a verificação
+                # print(todos_preenchidos)
+                # print("lalaalaalalaalla")
                 # Agora 'todos_preenchidos' será True se todos os elementos forem diferentes de None
                 # Caso contrário, será False
 
-                print("ujbjsjs")
-                print(todos_preenchidos)
+                # print("ujbjsjs")
+                # print(locais)
+                print(len(alunos) == len(locaisMomentoAnterior))
                 if(len(alunos) == len(locaisMomentoAnterior)):
+                    print("yes")
                     if todos_preenchidos:
                         resultado = True
                         return bool(resultado)
@@ -130,7 +139,7 @@ def VerificarMomento(selected_case, idcarinha):
                 data_atual = datetime.date.today()
                 data_formatada = data_atual.strftime('%Y-%m-%d')
                 query = """
-                    SELECT p.Local_descida_escola_casa
+                    SELECT p.Local_descida_casa_escola
                     FROM Presenca p
                     JOIN Aluno a ON p.idaluno = a.idaluno
                     WHERE a.Id_carrinha = %s AND p.Data_presenca = %s
@@ -148,9 +157,9 @@ def VerificarMomento(selected_case, idcarinha):
                 
 
                 for local in locaisAcima:
-                    print(local)
-                    print("ahdad")
-                    if local["Local_descida_escola_casa"] is None:
+                    # print(local)
+                    # print("ahdad")
+                    if local["Local_descida_casa_escola"] is None:
                         print(local)
                         print("ausdna")
                         todos_preenchidosAcima = False
@@ -159,8 +168,8 @@ def VerificarMomento(selected_case, idcarinha):
                 # Agora 'todos_preenchidos' será True se todos os elementos forem diferentes de None
                 # Caso contrário, será False
 
-                print("ujbjsjs")
-                print(todos_preenchidosAcima)
+                # print("ujbjsjs")
+                # print(todos_preenchidosAcima)
                 
 
 
@@ -221,18 +230,18 @@ def VerificarMomento(selected_case, idcarinha):
                 cursor = connection.cursor()
                 cursor.execute(query, (idcarinha, data_formatada))
                 locaisAcima = cursor.fetchall()
-                print(locaisAcima)
-                print("VVBJHBBJH")
+                # print(locaisAcima)
+                # print("VVBJHBBJH")
                 # print(locais)
                 # Verificar se todos os locais estão preenchidos
                 todos_preenchidosAcima = True
 
                 for local in locaisAcima:
-                    print(local)
+                    # print(local)
                     print("ahdad")
                     if local["Local_subida_escola_casa"] is None:
-                        print(local)
-                        print("ausdna")
+                        # print(local)
+                        # print("ausdna")
                         todos_preenchidos = False
                         break  # Se encontrar pelo menos um None, podemos parar a verificação
 
@@ -259,11 +268,11 @@ def VerificarMomento(selected_case, idcarinha):
                 todos_preenchidos = True
 
                 for local in locais:
-                    print(local)
-                    print("ahdad")
+                    # print(local)
+                    # print("ahdad")
                     if local["Local_descida_escola_casa"] is None:
-                        print(local)
-                        print("ausdna")
+                        # print(local)
+                        # print("ausdna")
                         todos_preenchidos = False
                         break  # Se encontrar pelo menos um None, podemos parar a verificação
 
@@ -287,6 +296,7 @@ def VerificarMomento(selected_case, idcarinha):
         result = Verificar_presenca_casa_escola_ida()
     elif(selected_case == 2):
         result = Verificar_presenca_casa_escola_volta()
+        print(result)
     elif(selected_case == 3):
         result = Verificar_presenca_escola_casa_ida()
     elif(selected_case == 4):
@@ -299,7 +309,7 @@ def VerificarMomento(selected_case, idcarinha):
     # if(Presenca is None):
     #     return jsonify({"code":200, "msg": "Sucesso"})
     # else:
-    print(result)
+    # print(result)
     return jsonify({"situacao":result, "code":200, "msg": "Dados ja existem"})
 
 

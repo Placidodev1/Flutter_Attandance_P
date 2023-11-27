@@ -9,25 +9,25 @@ import asyncio
 blp = Blueprint("presenca", __name__)
 
 # Return all of the presenca of the day
-@blp.route("/Presenca_dia/<string:date>", methods=["GET"])
+@blp.route("", methods=["GET"])
 def retorna_dia(date):
     try:
         date_obj = datetime.datetime.strptime(date, "%Y-%m-%d")
-        query= f""" SELECT * FROM presenca WHERE Data_presenca = %s"""
+        query= """ SELECT * FROM presenca WHERE Data_presenca = %s"""
         cursor = connection.cursor()
         cursor.execute(query, date_obj)
         presencadia = cursor.fetchall()
         cursor.close()
         return jsonify({"data": presencadia})
-    except ValueError:
-        return jsonify({"data":"abidanid"})
+    except ValueError as e:
+        return jsonify({"data":e})
 
 # Return all of the presenca of the day
 @blp.route("/Presenca_dia_aluno/<string:date>/<int:idaluno>", methods=["GET"])
 def retorna_dia_aluno(date, idaluno):
     try:
         date_obj = datetime.datetime.strptime(date, "%Y-%m-%d")
-        query= f""" SELECT * FROM presenca WHERE (Data_presenca = %s) AND (idAluno = %s)"""
+        query= """ SELECT * FROM presenca WHERE (Data_presenca = %s) AND (idAluno = %s)"""
         cursor = connection.cursor()
         cursor.execute(query, (date_obj, idaluno))
         presencadia = cursor.fetchall()
@@ -406,7 +406,7 @@ def marcar_presenca(idAluno, selected_case):
 
 
     
-@blp.route("/marcar_presenca_a_todos/<int:marcadordefalta>/<int:idcarinha>", methods=['POST'])
+@blp.route("/marcar_presenca_a_todos/<int:marcadordefalta>/<int:idcarinha>", methods=['GET'])
 async def marcar_presenca_a_todos(marcadordefalta, idcarinha):
     
     # Instacia a presenca com dados basicos e o resto deixa null

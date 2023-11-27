@@ -53,7 +53,8 @@ def get_all_alunos_carinha(nrcarinha):
         cursor.execute(query, nrcarinha)
         aluno = cursor.fetchall()
         cursor.close()
-
+        
+        print(aluno)
         if not aluno:
             # Se a consulta retornar uma lista vazia, você pode retornar um HTTP 404.
             abort(404)

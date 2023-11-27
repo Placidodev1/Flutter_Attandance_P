@@ -33,4 +33,35 @@ def login():
                 access_token = create_access_token(identity=id)    
 
                 return jsonify({"token": access_token, "id":user_name, "code":200, "Carinha": Carinha, "nome_user":user_name  } )
+
+
+
+
+@blp.route("/Loginresponsavel", methods=['POST'])
+def loginresponsavel():
+            
+            usuario = request.json
+            cursor = connection.cursor()
+            query = """SELECT idAluno, Senha, Email, Nome FROM aluno WHERE (Email = %s AND Senha = %s)"""
+            cursor.execute(query,( usuario['email'], int(usuario['password'])))
+            user = cursor.fetchone()
+            cursor.close()
+            print(user)
+            
+            # expira
+            exptime = datetime.now() + timedelta(minutes=15)
+            exp_epoc_time = exptime.timestamp()
+
+
+            
+
+            if user is None:
+                return jsonify({"msg": "Username ou password incorrecto", "code":401})
+            else:
+                id = int(user['idAluno'])
+                
+                user_name =  user['Nome']
+                access_token = create_access_token(identity=id)    
+
+                return jsonify({"token": access_token, "id":user_name, "code":200, "nome_user":user_name, "idAluno":id  } )
             
