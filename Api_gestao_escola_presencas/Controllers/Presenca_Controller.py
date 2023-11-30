@@ -9,7 +9,7 @@ import asyncio
 blp = Blueprint("presenca", __name__)
 
 # Return all of the presenca of the day
-@blp.route("", methods=["GET"])
+@blp.route("/Presenca_dia/<string:date>", methods=["GET"])
 def retorna_dia(date):
     try:
         date_obj = datetime.datetime.strptime(date, "%Y-%m-%d")
@@ -190,8 +190,10 @@ def marcar_presenca(idAluno, selected_case):
                  
                 Local_subida_casa_escola = data.get("Local_subida_casa_escola")
                 print(Local_subida_casa_escola)
+                print('advbhlabdabjduadjkanjdahu')
                 Tipo_de_marcacao_subida_casa_escola = data.get("Tipo_de_marcacao_subida_casa_escola")
-                
+                momento_de_marcacao = data.get("momento de marcacao")
+                print(momento_de_marcacao)
 
                 with connection.cursor() as cursor:
                     sql = "UPDATE Presenca SET `Local_subida_casa_escola` = %s, `Tipo_de_marcacao_subida_casa_escola` = %s WHERE `idPresenca` = %s"
@@ -211,8 +213,8 @@ def marcar_presenca(idAluno, selected_case):
                 
 
                 with connection.cursor() as cursor:
-                    sql = "INSERT INTO Momento_de_marcacao (`idFuncionario`, `idPresenca`) VALUES (%s, %s)"
-                    cursor.execute(sql, ( id_funcionario, PresencaCriada))
+                    sql = "INSERT INTO Momento_de_marcacao (`idFuncionario`, `idPresenca`, `momento de marcacao`) VALUES (%s, %s, %s)"
+                    cursor.execute(sql, ( id_funcionario, PresencaCriada, momento_de_marcacao))
                     connection.commit()
                 if num_linhas_afetadas > 0:
                     # return jsonify({"msg":"Dados inseridos", "code": 200, "PresencaCriada":PresencaCriada})
@@ -260,6 +262,7 @@ def marcar_presenca(idAluno, selected_case):
                 data = request.json 
                 Local_descida_casa_escola = data.get("Local_descida_casa_escola")
                 Tipo_de_marcacao_descida_casa_escola = data.get("Tipo_de_marcacao_descida_casa_escola")
+                momento_de_marcacao = data.get("momento de marcacao")
                 data_atual = datetime.date.today()
                 data_formatada = data_atual.strftime('%Y-%m-%d')
                 
@@ -292,8 +295,8 @@ def marcar_presenca(idAluno, selected_case):
                 
 
                 with connection.cursor() as cursor:
-                    sql = "INSERT INTO Momento_de_marcacao (`idFuncionario`, `idPresenca`) VALUES ( %s, %s)"
-                    cursor.execute(sql, ( id_funcionario, idPresenca_parsed, ))
+                    sql = "INSERT INTO Momento_de_marcacao (`idFuncionario`, `idPresenca`, `momento de marcacao`) VALUES ( %s, %s,%s)"
+                    cursor.execute(sql, ( id_funcionario, idPresenca_parsed, momento_de_marcacao ))
                     connection.commit()
 
                 return "Dados inseridos"
@@ -313,6 +316,7 @@ def marcar_presenca(idAluno, selected_case):
                 data = request.json 
                 Local_subida_escola_casa = data.get("Local_subida_escola_casa")
                 Tipo_de_marcacao_subida_escola_casa = data.get("Tipo_de_marcacao_subida_escola_casa")
+                momento_de_marcacao = data.get("momento de marcacao")
                 data_atual = datetime.date.today()
                 data_formatada = data_atual.strftime('%Y-%m-%d')
                 
@@ -337,8 +341,8 @@ def marcar_presenca(idAluno, selected_case):
                 
 
                 with connection.cursor() as cursor:
-                    sql = "INSERT INTO Momento_de_marcacao ( `idFuncionario`, `idPresenca`) VALUES ( %s, %s)"
-                    cursor.execute(sql, ( id_funcionario, idPresenca))
+                    sql = "INSERT INTO Momento_de_marcacao ( `idFuncionario`, `idPresenca`, `momento de marcacao`) VALUES ( %s, %s, %s)"
+                    cursor.execute(sql, ( id_funcionario, idPresenca,momento_de_marcacao))
                     connection.commit()
 
                 return "Dados inseridos"
@@ -354,6 +358,7 @@ def marcar_presenca(idAluno, selected_case):
                 data = request.json 
                 Local_descida_escola_casa = data.get("Local_descida_escola_casa")
                 Tipo_de_marcacao_descida_escola_casa = data.get("Tipo_de_marcacao_descida_escola_casa")
+                momento_de_marcacao = data.get("momento de marcacao")
                 data_atual = datetime.date.today()
                 data_formatada = data_atual.strftime('%Y-%m-%d')
                 
@@ -378,8 +383,8 @@ def marcar_presenca(idAluno, selected_case):
                 
 
                 with connection.cursor() as cursor:
-                    sql = "INSERT INTO Momento_de_marcacao ( `idFuncionario`, `idPresenca`) VALUES (%s, %s)"
-                    cursor.execute(sql, ( id_funcionario, idPresenca))
+                    sql = "INSERT INTO Momento_de_marcacao ( `idFuncionario`, `idPresenca`, `momento de marcacao`) VALUES (%s, %s, %s)"
+                    cursor.execute(sql, ( id_funcionario, idPresenca, momento_de_marcacao))
                     connection.commit()
 
                 return "Dados inseridos"
