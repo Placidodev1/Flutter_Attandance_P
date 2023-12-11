@@ -1,3 +1,4 @@
+import json
 from flask import jsonify, abort, Blueprint, request
 import pymysql
 from db import connection   
@@ -16,14 +17,14 @@ def VerificarMomento(selected_case, idcarinha):
         try:
                 data_atual = datetime.date.today()
                 data_formatada = data_atual.strftime('%Y-%m-%d')
-
+                # Busca todos alunos de uma determinada carinha
                 query = "SELECT idAluno FROM aluno WHERE Id_carrinha = %s"
                 cursor = connection.cursor()
                 cursor.execute(query, (idcarinha))
                 alunos = cursor.fetchall()
 
 
-                
+                # Busca o local para os alunos da carinha em questao
                 query = """
                     SELECT p.Local_subida_casa_escola
                     FROM Presenca p
@@ -33,12 +34,13 @@ def VerificarMomento(selected_case, idcarinha):
                 cursor = connection.cursor()
                 cursor.execute(query, (idcarinha, data_formatada))
                 locais = cursor.fetchall()
-                print(locais)
+                # print(locais)
 
+                # Verifica se as duas listas tem o mesmo tamanho para determinar o acesso a marcacao
                 if(len(alunos) == len(locais)):
-                    return True
+                    return jsonify({"situacao": True, "msg": "Marcacao feita"})
                 else:
-                    return False
+                    return jsonify({"situacao": False, "msg": "Pode efetuar"})
    
         except Exception as e:
                 return str(e)         
@@ -52,14 +54,14 @@ def VerificarMomento(selected_case, idcarinha):
                 # Requisicao para saber se ja se marcou acima
                 data_atual = datetime.date.today()
                 data_formatada = data_atual.strftime('%Y-%m-%d')
-
+                # Busca todos alunos de uma determinada carinha
                 query = "SELECT idAluno FROM aluno WHERE Id_carrinha = %s"
                 cursor = connection.cursor()
                 cursor.execute(query, (idcarinha))
                 alunos = cursor.fetchall()
                 
 
-                
+                # Busca o local para os alunos da carinha em questao para verificar se o momento acima foi marcado
                 query = """
                     SELECT p.Local_subida_casa_escola
                     FROM Presenca p
@@ -69,7 +71,7 @@ def VerificarMomento(selected_case, idcarinha):
                 cursor = connection.cursor()
                 cursor.execute(query, (idcarinha, data_formatada))
                 locaisMomentoAnterior = cursor.fetchall()
-                # print(locaisMomentoAnterior)
+                
 
                 
 
@@ -90,42 +92,36 @@ def VerificarMomento(selected_case, idcarinha):
                 # print(locais)
                 # print("VVBJHBBJH")
                 # print(locais)
+
                 # Verificar se todos os locais estão preenchidos
                 todos_preenchidos = True
-                print(todos_preenchidos)
+                # print(todos_preenchidos)
 
+                # Caso algum aluno nao estiver preechido ira retornar false
                 for local in locais:
                     # print(local)
                     valor = local['Local_descida_casa_escola']
-                    print(valor)
-
-                    # print(local["Local_descida_escola_casa"])
-                    # print("ahdad")
+                    
                     if valor is None:
                         print(valor)
                         # print("ausdna")
                         todos_preenchidos = False
                         # print(todos_preenchidos)
                         break  # Se encontrar pelo menos um None, podemos parar a verificação
-                # print(todos_preenchidos)
-                # print("lalaalaalalaalla")
-                # Agora 'todos_preenchidos' será True se todos os elementos forem diferentes de None
-                # Caso contrário, será False
+                
 
-                # print("ujbjsjs")
-                # print(locais)
-                print(len(alunos) == len(locaisMomentoAnterior))
+                # Verifica se as duas listas tem o mesmo tamanho para determinar o acesso a marcacao
                 if(len(alunos) == len(locaisMomentoAnterior)):
                     print("yes")
                     if todos_preenchidos:
                         resultado = True
-                        return bool(resultado)
+                        return jsonify({"situacao": bool(resultado), "msg": "Marcacao feita"})
                     else:
                         resultado = False
-                        return bool(resultado)
+                        return jsonify({"situacao": bool(resultado), "msg": "Pode efetuar"})
                 else:
                     resultado = True
-                    return bool(resultado)
+                    return jsonify({"situacao": bool(resultado), "msg": "Termine a marcacao acima"})
                    
             except Exception as e:
                 return str(e)
@@ -135,6 +131,16 @@ def VerificarMomento(selected_case, idcarinha):
 
     def Verificar_presenca_escola_casa_ida():
         try:
+                
+
+
+                data_atual = datetime.date.today()
+                data_formatada = data_atual.strftime('%Y-%m-%d')
+                # Busca todos alunos de uma determinada carinha
+                query = "SELECT idAluno FROM aluno WHERE Id_carrinha = %s"
+                cursor = connection.cursor()
+                cursor.execute(query, (idcarinha))
+                alunos = cursor.fetchall()
                 
                 data_atual = datetime.date.today()
                 data_formatada = data_atual.strftime('%Y-%m-%d')
@@ -147,21 +153,19 @@ def VerificarMomento(selected_case, idcarinha):
                 cursor = connection.cursor()
                 cursor.execute(query, (idcarinha, data_formatada))
                 locaisAcima = cursor.fetchall()
-                print(locaisAcima)
-                print("VVBJHBBJH")
-                # print(locais)
+                
                 # Verificar se todos os locais do momento anterior estão preenchidos
                 todos_preenchidosAcima = True
-
                 
                 
+                if len(locaisAcima) == 0:
+                     todos_preenchidosAcima = False
 
                 for local in locaisAcima:
                     # print(local)
                     # print("ahdad")
                     if local["Local_descida_casa_escola"] is None:
-                        print(local)
-                        print("ausdna")
+                        
                         todos_preenchidosAcima = False
                         break  # Se encontrar pelo menos um None, podemos parar a verificação
 
@@ -185,33 +189,30 @@ def VerificarMomento(selected_case, idcarinha):
                 cursor = connection.cursor()
                 cursor.execute(query, (idcarinha, data_formatada))
                 locais = cursor.fetchall()
-                print(locais)
-                print("VVBJHBBJH")
-                # print(locais)
-                # Verificar se todos os locais estão preenchidos
+                
                 todos_preenchidos = True
 
                 for local in locais:
                     print(local)
                     print("ahdad")
                     if local["Local_subida_escola_casa"] is None:
-                        print(local)
-                        print("ausdna")
+                        
                         todos_preenchidos = False
                         break  # Se encontrar pelo menos um None, podemos parar a verificação
 
                 # Agora 'todos_preenchidos' será True se todos os elementos forem diferentes de None
                 # Caso contrário, será False
+                print(todos_preenchidosAcima and len(alunos) == len(locaisAcima))
                 if(todos_preenchidosAcima):
                     if todos_preenchidos:
                         resultado = True
-                        return bool(resultado)
+                        return jsonify({"situacao": bool(resultado), "msg": "Marcacao feita"})
                     else:
                         resultado = False
-                        return bool(resultado)
+                        return jsonify({"situacao": bool(resultado), "msg": "Pode efetuar"})
                 else:
                     resultado = True
-                    return bool(resultado)
+                    return jsonify({"situacao": bool(resultado), "msg": "Termine a marcacao acima"})
                 
         except Exception as e:
                 return str(e)
@@ -219,6 +220,15 @@ def VerificarMomento(selected_case, idcarinha):
     def Verificar_presenca_escola_casa_volta():
         try:
                 
+                
+                # Busca todos alunos de uma determinada carinha
+                query = "SELECT idAluno FROM aluno WHERE Id_carrinha = %s"
+                cursor = connection.cursor()
+                cursor.execute(query, (idcarinha))
+                alunos = cursor.fetchall()
+                
+
+
                 data_atual = datetime.date.today()
                 data_formatada = data_atual.strftime('%Y-%m-%d')
                 query = """
@@ -230,11 +240,15 @@ def VerificarMomento(selected_case, idcarinha):
                 cursor = connection.cursor()
                 cursor.execute(query, (idcarinha, data_formatada))
                 locaisAcima = cursor.fetchall()
-                # print(locaisAcima)
+                print(locaisAcima)
                 # print("VVBJHBBJH")
                 # print(locais)
                 # Verificar se todos os locais estão preenchidos
                 todos_preenchidosAcima = True
+                
+                if len(locaisAcima) == 0:
+                     print("adada")
+                     todos_preenchidosAcima = False
 
                 for local in locaisAcima:
                     # print(local)
@@ -242,11 +256,10 @@ def VerificarMomento(selected_case, idcarinha):
                     if local["Local_subida_escola_casa"] is None:
                         # print(local)
                         # print("ausdna")
-                        todos_preenchidos = False
+                        todos_preenchidosAcima = False
                         break  # Se encontrar pelo menos um None, podemos parar a verificação
 
-                # Agora 'todos_preenchidos' será True se todos os elementos forem diferentes de None
-                # Caso contrário, será False
+                
                 
 
 
@@ -271,24 +284,22 @@ def VerificarMomento(selected_case, idcarinha):
                     # print(local)
                     # print("ahdad")
                     if local["Local_descida_escola_casa"] is None:
-                        # print(local)
-                        # print("ausdna")
+                       
                         todos_preenchidos = False
                         break  # Se encontrar pelo menos um None, podemos parar a verificação
 
-                # Agora 'todos_preenchidos' será True se todos os elementos forem diferentes de None
-                # Caso contrário, será False
+                
 
-                if(todos_preenchidosAcima):
+                if(todos_preenchidosAcima ):
                     if todos_preenchidos:
                         resultado = True
-                        return bool(resultado)
+                        return jsonify({"situacao": bool(resultado), "msg": "Marcacao feita"})
                     else:
                         resultado = False
-                        return bool(resultado)
+                        return jsonify({"situacao": bool(resultado), "msg": "Pode efetuar"})
                 else:
                     resultado = True
-                    return bool(resultado)
+                    return jsonify({"situacao": bool(resultado), "msg": "Termine a marcacao acima"})
         except Exception as e:
                 return str(e)
 
@@ -303,14 +314,18 @@ def VerificarMomento(selected_case, idcarinha):
         result = Verificar_presenca_escola_casa_volta()
 
     
+   
 
-    
-    
-    # if(Presenca is None):
-    #     return jsonify({"code":200, "msg": "Sucesso"})
-    # else:
-    # print(result)
-    return jsonify({"situacao":result, "code":200, "msg": "Dados ja existem"})
+    resultadotxt = result.get_data(as_text=True)
+    # Parse do JSON para um objeto Python
+    objeto_json = json.loads(resultadotxt)
+
+    # Acesse os valores associados às chaves
+    valor_msg = objeto_json.get('msg')
+    valor_situacao = objeto_json.get('situacao')
+
+    print(resultadotxt)
+    return jsonify({"situacao":valor_situacao, "code":200, "msg":valor_msg })
 
 
     

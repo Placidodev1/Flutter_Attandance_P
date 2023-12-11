@@ -40,8 +40,20 @@ dependencies:
   iconify_flutter: ^0.0.5
   google_fonts: ^6.1.0
   dropdown_button2: ^2.3.8
-  webview_flutter: ^2.3.0
-  # camera: ^0.9.5+2
+  flutter_barcode_scanner: ^2.0.0
+  geolocator: ^10.1.0
+  shared_preferences: ^2.0.8
+  intl: ^0.18.1
+  local_auth: ^2.1.7
+  pretty_qr_code: ^3.0.0
+  barcode_widget: ^2.0.4
+  pdf: ^3.10.7
+  qr_flutter: ^4.1.0
+  image: ^4.1.3
+  open_file: ^3.3.2
+  path_provider: ^2.1.1
+  
+
 
 dev_dependencies:
   flutter_test:
@@ -51,7 +63,7 @@ dev_dependencies:
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
+  # rules and activating additional ones.''
   flutter_lints: ^2.0.0
 
 # For information on the generic Dart part of this file, see the
@@ -69,6 +81,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - lib/imagens/
+    
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -82,17 +95,27 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
+  fonts:
+  - family: OpenSans
+    fonts:
+        - asset: fonts/OpenSans-Regular.ttf
+
+  #   - family: Roboto
+  #     fonts:
+  #       - asset: fonts/Roboto-Regular.ttf
+  #       - asset: fonts/Roboto-Bold.ttf
+  # - assets/
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+  # - family: Trajan Pro
+  #   fonts:
+  #     - asset: fonts/TrajanPro.ttf
+  #     - asset: fonts/TrajanPro_Bold.ttf
+  #       weight: 700
+    
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

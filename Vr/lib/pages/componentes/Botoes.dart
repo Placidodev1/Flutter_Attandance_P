@@ -1,7 +1,7 @@
+import 'package:Registoflutterattandance/Services/regista_dados.dart';
 import 'package:Registoflutterattandance/pages/Funcionario_captura_de_dados/Pagina_principal.dart';
 import 'package:Registoflutterattandance/pages/Funcionario_captura_de_dados/Perguntas_frequentes.dart';
 import 'package:flutter/material.dart';
-
 
 class MeusBotoes extends StatelessWidget {
   final Color? corprimaria;
@@ -40,17 +40,16 @@ class MeusBotoes extends StatelessWidget {
         break;
 
       case 5:
-        // Marcadas
+        // Registar
+
+        Navigator.pushNamed(context, '/RegistarAlunos');
         break;
 
       case 6:
         // Pendentes
         break;
       case 7:
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => MainPage()),
-        // );
+        fetchDadosDeMarcacao(1);
         break;
       default:
         break;
@@ -63,30 +62,25 @@ class MeusBotoes extends StatelessWidget {
       onTap: () => _navigate(context),
       child: Container(
         height: 35,
-        width: 123,
+        width: 110,
         decoration: BoxDecoration(
-          color: corprimaria,
-          borderRadius: BorderRadius.circular(6),
-          boxShadow: const [
-            // BoxShadow(
-            //   color: Colors.black,
-            //   spreadRadius: 0.05,
-            //   blurRadius: 3.5,
-            //   offset: Offset(0, 2)
-            // )
-          ]
-        ),
+            color: corprimaria,
+            borderRadius: BorderRadius.circular(6),
+            boxShadow: const [
+              // BoxShadow(
+              //   color: Colors.black,
+              //   spreadRadius: 0.05,
+              //   blurRadius: 3.5,
+              //   offset: Offset(0, 2)
+              // )
+            ]),
         child: Center(
           child: Text(
             myText!,
             style: TextStyle(
-              color: segundacor,
-              fontWeight: FontWeight.w600,
-              fontSize: 15
-            ),
+                color: segundacor, fontWeight: FontWeight.w600, fontSize: 15),
           ),
         ),
-        
       ),
     );
   }

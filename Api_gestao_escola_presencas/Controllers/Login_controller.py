@@ -32,7 +32,7 @@ def login():
                 user_name =  user['Nome']
                 access_token = create_access_token(identity=id)    
 
-                return jsonify({"token": access_token, "id":user_name, "code":200, "Carinha": Carinha, "nome_user":user_name  } )
+                return jsonify({"token": access_token, "id":id, "code":200, "Carinha": Carinha, "nome_user":user_name,   } )
 
 
 
