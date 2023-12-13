@@ -1,5 +1,6 @@
 
-from flask import Blueprint
+import os
+from flask import Blueprint, send_file
 from db import  connection
 from flask import jsonify,abort
 
@@ -91,18 +92,24 @@ def get__1_aluno( idAluno):
 @blp.route("/Aluno_especifico_Barcode/<int:Barcode>")
 
 #   LISTAR unico aluno 
-def get_1_Barcode_aluno( Barcode):
+def get_1_Barcode_aluno(Barcode):
     try:
         query = """SELECT * FROM aluno WHERE Barcode = %s;"""
         cursor = connection.cursor()
         cursor.execute(query, Barcode)
         aluno_especifico = cursor.fetchall()
+        print(aluno_especifico)
+        
+        
         cursor.close()
+
+            
     except Exception as ex:
         return jsonify({"message":str(ex),"code":500})
     if aluno_especifico is None:
-        abort(404)
-    return jsonify({"data": aluno_especifico })
+        return jsonify({"code": 404, "msg": "aluno nao existe"  })
+    return jsonify({"data": aluno_especifico, "code": 200, "msg": "Sucesso","nomeImagem": aluno_especifico[0]["Foto"] })
+
 
 
 @blp.route("/Aluno_especifico_QRcode/<string:QRCode>")

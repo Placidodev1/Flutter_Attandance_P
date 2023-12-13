@@ -455,8 +455,7 @@ def marcar_presenca(idAluno, selected_case):
     elif(selected_case == 0):
         result = marcar_presenca_marcacao_ja_feita()
 
-    # print(result)
-    # print("UJNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN")
+
     if(result):
         
         resultadotxt = result.get_data(as_text=True)
@@ -469,11 +468,7 @@ def marcar_presenca(idAluno, selected_case):
         resjson["msg"] = "Presença já registrada"
         
 
-    # print(resjson)
-    # print(resultadotxt)
-    # if(Presenca is None):
-    #     return jsonify({"code":200, "msg": "Sucesso"})
-    # else:
+
     return jsonify({"Presenca":Presenca, "code":resjson["code"], "msg": resjson["msg"]})
 
 

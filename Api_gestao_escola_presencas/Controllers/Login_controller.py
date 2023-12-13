@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import create_access_token
+import pymysql
 from Services import get_funcionarios
 from db import connection 
 
@@ -8,12 +9,18 @@ blp = Blueprint("Login",__name__)
 
 @blp.route("/Login", methods=['POST'])
 def login():
-            
+        try:
             usuario = request.json
+            print(usuario)
+            usuario1 = str(usuario['email'])
+            print(usuario1)
+            password = int(usuario['password'])
+            print(password)
             cursor = connection.cursor()
             query = """SELECT id_Carrinha, Senha, idFuncionario, Email, Nome FROM funcionario WHERE (Email = %s AND Senha = %s)"""
-            cursor.execute(query,( usuario['email'], int(usuario['password'])))
+            cursor.execute(query,( usuario1, password))
             user = cursor.fetchone()
+            
             cursor.close()
             print(user)
             
@@ -33,6 +40,14 @@ def login():
                 access_token = create_access_token(identity=id)    
 
                 return jsonify({"token": access_token, "id":id, "code":200, "Carinha": Carinha, "nome_user":user_name,   } )
+        except pymysql.err.InterfaceError as e:
+            return(f"Erro de interface: {e}")
+        except pymysql.err.DataError as e:
+            return (f"Erro de formato de dados: {e}")
+        except pymysql.err.IntegrityError as e:
+            return f"Erro de integridade: {e}"
+        except Exception as e:
+            return(f"Erro desconhecido: {e}")
 
 
 
