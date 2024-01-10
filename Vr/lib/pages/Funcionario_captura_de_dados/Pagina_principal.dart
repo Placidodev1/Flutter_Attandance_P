@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:Registoflutterattandance/Urlproject.dart';
 import 'package:Registoflutterattandance/pages/componentes/Botoes.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +40,7 @@ class _PaginaprincipalRegistroState extends State<PaginaprincipalRegistro> {
       users = json['data'];
       rows = users.map((user) {
         String nome = user['Nome'] ?? 'Indefinido';
-        int? codigo = user['codigo_da_escola']; // Mantido como um tipo nullable
+        int? codigo = user['codigo_da_escola']; 
         String Faceid = user['FaceId'] ?? '';
         bool Face = Faceid.isNotEmpty;
         int? Barcode = user['Barcode'];
@@ -46,8 +48,7 @@ class _PaginaprincipalRegistroState extends State<PaginaprincipalRegistro> {
         String QRCode = user['QRCode'] ?? '';
         bool QR = QRCode.isNotEmpty;
 
-        // print(code);
-        print(Face);
+        
 
         return DataRow(cells: [
           DataCell(Text(
@@ -123,8 +124,7 @@ class _PaginaprincipalRegistroState extends State<PaginaprincipalRegistro> {
     var size = MediaQuery.of(context).size;
     double heightmedia = size.height;
     double widthmedia = size.width;
-    print(widthmedia);
-    print("altura: $heightmedia");
+    
 
 
 
@@ -155,13 +155,13 @@ class _PaginaprincipalRegistroState extends State<PaginaprincipalRegistro> {
               children: [
                 Container(
                   constraints: BoxConstraints(
-                    maxHeight: widthmedia * 0.39, // Define a altura máxima
-                    maxWidth: widthmedia * 0.07, // Define a largura máxima
+                    maxHeight: widthmedia * 0.39, 
+                    maxWidth: widthmedia * 0.07, 
                   ),
                   child: Image.asset(
                     'lib/imagens/logo.webp',
                     fit: BoxFit
-                        .contain, // Faz a imagem se ajustar ao tamanho disponível
+                        .contain, 
                   ),
                 ),
                 const Row(
@@ -257,8 +257,8 @@ class _PaginaprincipalRegistroState extends State<PaginaprincipalRegistro> {
         ),
       ),
       bottomNavigationBar: Container(
-        color: const Color(0xfff003459), // Cor de fundo do rodapé
-        padding: const EdgeInsets.all(10), // Espaçamento interno
+        color: const Color(0xfff003459), 
+        padding: const EdgeInsets.all(10), 
         child: const Text(
           'Copyright All rights reserved | Esta pagina foi densevolvida por Placido Nhapulo',
           style: TextStyle(

@@ -1,0 +1,14 @@
+# Target labels
+ pdfium-download
+# Source files and their labels
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/pdfium-download/CMakeFiles/pdfium-download
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/pdfium-download/CMakeFiles/5416599083018c8b262cb83d584f0a36/pdfium-download.rule
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/pdfium-download/CMakeFiles/7932583e14ed2b19d25e13cd7ec7525f/pdfium-download-complete.rule
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/pdfium-download/CMakeFiles/1a12b137d0891f3a9c74ad078e893500/pdfium-download-build.rule
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/pdfium-download/CMakeFiles/1a12b137d0891f3a9c74ad078e893500/pdfium-download-configure.rule
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/pdfium-download/CMakeFiles/1a12b137d0891f3a9c74ad078e893500/pdfium-download-download.rule
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/pdfium-download/CMakeFiles/1a12b137d0891f3a9c74ad078e893500/pdfium-download-install.rule
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/pdfium-download/CMakeFiles/1a12b137d0891f3a9c74ad078e893500/pdfium-download-mkdir.rule
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/pdfium-download/CMakeFiles/1a12b137d0891f3a9c74ad078e893500/pdfium-download-patch.rule
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/pdfium-download/CMakeFiles/1a12b137d0891f3a9c74ad078e893500/pdfium-download-test.rule
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/pdfium-download/CMakeFiles/1a12b137d0891f3a9c74ad078e893500/pdfium-download-update.rule

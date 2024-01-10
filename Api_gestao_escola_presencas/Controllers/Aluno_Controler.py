@@ -106,9 +106,11 @@ def get_1_Barcode_aluno(Barcode):
             
     except Exception as ex:
         return jsonify({"message":str(ex),"code":500})
-    if aluno_especifico is None:
-        return jsonify({"code": 404, "msg": "aluno nao existe"  })
-    return jsonify({"data": aluno_especifico, "code": 200, "msg": "Sucesso","nomeImagem": aluno_especifico[0]["Foto"] })
+    if len(aluno_especifico) == 0:
+        print("andkandada")
+        return jsonify({"data":"vazio", "code": 404, "msg": "aluno nao existe"  })
+    print("paaaapappppaap")
+    return jsonify({"data": aluno_especifico[0], "code": 200, "msg": "Sucesso","nomeImagem": aluno_especifico[0]["Foto"] })
 
 
 

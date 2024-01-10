@@ -1,0 +1,1 @@
+ C:\\Users\\Placido\ Nhapulo\\Desktop\\Acsun\\Versoes\ de\ attandance\ project\\Projecto\ Attandance\\v5\\Vr\\.dart_tool\\flutter_build\\6c0d02bc9638b5f57cf5b5c4b210290d\\native_assets.yaml: 

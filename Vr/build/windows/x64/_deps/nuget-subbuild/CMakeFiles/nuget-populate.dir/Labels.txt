@@ -1,0 +1,15 @@
+# Target labels
+ nuget-populate
+# Source files and their labels
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/nuget-populate
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/d136fbc46f8a0f52cac9b0593b08c958/nuget-populate.rule
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/836fcc39bd04b76e8349c35e82c0cbff/nuget-populate-complete.rule
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/bd22822fd33c704f1010690624e9846a/nuget-populate-build.rule
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/bd22822fd33c704f1010690624e9846a/nuget-populate-configure.rule
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/bd22822fd33c704f1010690624e9846a/nuget-populate-copyfile.rule
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/bd22822fd33c704f1010690624e9846a/nuget-populate-download.rule
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/bd22822fd33c704f1010690624e9846a/nuget-populate-install.rule
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/bd22822fd33c704f1010690624e9846a/nuget-populate-mkdir.rule
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/bd22822fd33c704f1010690624e9846a/nuget-populate-patch.rule
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/bd22822fd33c704f1010690624e9846a/nuget-populate-test.rule
+C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/bd22822fd33c704f1010690624e9846a/nuget-populate-update.rule

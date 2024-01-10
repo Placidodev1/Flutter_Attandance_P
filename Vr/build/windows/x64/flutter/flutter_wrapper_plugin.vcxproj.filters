@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Vr\windows\flutter\ephemeral\cpp_client_wrapper\core_implementations.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Vr\windows\flutter\ephemeral\cpp_client_wrapper\standard_codec.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Vr\windows\flutter\ephemeral\cpp_client_wrapper\plugin_registrar.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Vr\windows\flutter\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{62734B2C-3640-351A-8EE7-FE77E19D162D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{BEA8CBF2-D92B-32F5-90E6-CEBEA79F05E8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

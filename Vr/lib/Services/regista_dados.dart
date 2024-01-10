@@ -41,21 +41,3 @@ fetchDadosDeMarcacao(int idAluno) async {
   }
 }
 
-// // ignore: non_constant_identifier_names
-// registarDadosParaMarcacao(dynamic Aluno) async {
-//   var dadosJson = jsonEncode(dados);
-
-//   var headers = {'Content-Type': 'application/json'};
-
-//   final url =
-//       'http://192.168.18.65:5000/marcar_presenca/$idaluno/$tipodemarcacao';
-
-//   final uri = Uri.parse(url);
-
-//   final response = await http.post(uri, headers: headers, body: dadosJson);
-
-//   final body = response.body;
-//   final body1 = jsonDecode(body);
-//   print(body1);
-//   return {'body1': body1, 'tipodemarcacao': tipodemarcacao};
-// }

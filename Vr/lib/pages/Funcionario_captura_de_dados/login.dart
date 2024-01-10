@@ -47,14 +47,12 @@ class WideScreenLayout extends StatelessWidget {
                 child: Container(
                   color: Colors.grey,
                   constraints: const BoxConstraints(
-                    // minWidth: 375,
-                    // minHeight: 300,
-                    maxHeight: 425, // Define a altura máxima
-                    maxWidth: 350, // Define a largura máxima
+                    maxHeight: 425, 
+                    maxWidth: 350, 
                   ),
                   child: Column(
                     mainAxisAlignment:
-                        MainAxisAlignment.start, // Alinhar textos à esquerda
+                        MainAxisAlignment.start, 
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const SizedBox(
@@ -110,7 +108,7 @@ class WideScreenLayout extends StatelessWidget {
                               letterSpacing: 2,
                               )),
                             ),
-                          const SizedBox(width: 10), // Espaço horizontal
+                          const SizedBox(width: 10), 
                         ],
                       ),
                       // Textfield do Username
@@ -134,13 +132,13 @@ class WideScreenLayout extends StatelessWidget {
               Expanded(
                 child: Container(
                   constraints: const BoxConstraints(
-                    maxHeight: 300, // Define a altura máxima
-                    maxWidth: 400, // Define a largura máxima
+                    maxHeight: 300, 
+                    maxWidth: 400, 
                   ),
                   child: Image.asset(
                     'lib/imagens/logo.webp',
                     fit: BoxFit
-                        .contain, // Faz a imagem se ajustar ao tamanho disponível
+                        .contain, 
                   ),
                 ),
               )
@@ -183,14 +181,13 @@ class NormalScreenLayout extends StatelessWidget {
                 child: Container(
                   color: Colors.grey,
                   constraints: const BoxConstraints(
-                    // minWidth: 375,
-                    // minHeight: 300,
-                    maxHeight: 425, // Define a altura máxima
-                    maxWidth: 350, // Define a largura máxima
+                    
+                    maxHeight: 425, 
+                    maxWidth: 350, 
                   ),
                   child: Column(
                     mainAxisAlignment:
-                        MainAxisAlignment.center, // Alinhar textos à esquerda
+                        MainAxisAlignment.center, 
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const SizedBox(
@@ -225,7 +222,7 @@ class NormalScreenLayout extends StatelessWidget {
                               letterSpacing: 2,
                             )),
                           ),
-                          const SizedBox(width: 10), // Espaço horizontal
+                          const SizedBox(width: 10), 
                         ],
                       ),
                       MeuTexto(

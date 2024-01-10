@@ -1,0 +1,49 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/nuget-populate"
+		},
+		{
+			"file" : "C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/d136fbc46f8a0f52cac9b0593b08c958/nuget-populate.rule"
+		},
+		{
+			"file" : "C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/836fcc39bd04b76e8349c35e82c0cbff/nuget-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/bd22822fd33c704f1010690624e9846a/nuget-populate-build.rule"
+		},
+		{
+			"file" : "C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/bd22822fd33c704f1010690624e9846a/nuget-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/bd22822fd33c704f1010690624e9846a/nuget-populate-copyfile.rule"
+		},
+		{
+			"file" : "C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/bd22822fd33c704f1010690624e9846a/nuget-populate-download.rule"
+		},
+		{
+			"file" : "C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/bd22822fd33c704f1010690624e9846a/nuget-populate-install.rule"
+		},
+		{
+			"file" : "C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/bd22822fd33c704f1010690624e9846a/nuget-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/bd22822fd33c704f1010690624e9846a/nuget-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/bd22822fd33c704f1010690624e9846a/nuget-populate-test.rule"
+		},
+		{
+			"file" : "C:/Users/Placido Nhapulo/Desktop/Acsun/Versoes de attandance project/Projecto Attandance/v5/Vr/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/bd22822fd33c704f1010690624e9846a/nuget-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"nuget-populate"
+		],
+		"name" : "nuget-populate"
+	}
+}

@@ -1,5 +1,5 @@
 // import 'package:flutterattandance/pages/login.dart';
-import 'dart:js';
+
 
 import 'package:Registoflutterattandance/Services/LoginService.dart';
 import 'package:Registoflutterattandance/pages/Funcionario_captura_de_dados/Pagina_principal.dart';

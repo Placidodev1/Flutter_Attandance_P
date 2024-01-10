@@ -2,7 +2,10 @@ import 'package:Registoflutterattandance/pages/Funcionario_captura_de_dados/Pagi
 import 'package:Registoflutterattandance/pages/Funcionario_captura_de_dados/Perguntas_frequentes.dart';
 import 'package:Registoflutterattandance/pages/Funcionario_captura_de_dados/Registrar_Dados.dart';
 import 'package:Registoflutterattandance/pages/Funcionario_captura_de_dados/login.dart';
+import 'package:Registoflutterattandance/pages/estados/estados_para_pdf.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +17,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    // Initialize GetX bindings
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Register MeuController
+  Get.put(MeuController());
     return MaterialApp(
       theme: ThemeData(
           appBarTheme: const AppBarTheme(

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Placido Nhapulo\Desktop\Acsun\Versoes de attandance project\Projecto Attandance\v5\Vr\build\windows\x64\pdfium-download\CMakeFiles\5416599083018c8b262cb83d584f0a36\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{F52BF339-20A2-3EBE-8A79-C76F95B0623C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

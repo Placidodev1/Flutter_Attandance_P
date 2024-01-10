@@ -1,0 +1,75 @@
+name: ussd_manegement
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # utilities packeges
+  http: ^1.1.0
+  intl: ^0.18.1
+  logger: ^2.0.1
+  url_launcher: ^6.2.2
+  smooth_page_indicator: ^1.1.0
+
+  # Icons
+  cupertino_icons: ^1.0.2
+  iconsax: ^0.0.8
+
+  # state Manegement
+  get: ^4.6.5
+  get_storage: 2.1.1
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^2.0.0
+
+flutter:
+
+
+  uses-material-design: true
+
+  assets:
+    - assets/logos/
+    - assets/imagens/animations/
+    - assets/imagens/on_boarding_images/
+    - assets/icons/
+    # - assets/imagens/on_boarding_images/sammy-line-woman-in-shopping-cart-placing-order-on-smartphone.gif
+    # - assets/imagens/on_boarding_images/sammy-line-sailor-on-mast-looking-through-telescope.gif
+    # - assets/imagens/on_boarding_images/sammy-line-man-and-dog-delivering-packages-on-a-moped.gif
+  #   - images/a_dot_ham.jpeg..
+
+  fonts:
+    - family: Poppins
+      fonts: 
+        - asset: assets/fonts/Poppins-Light.ttf
+        - weight: 300
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - weight: 400
+        - asset: assets/fonts/Poppins-Italic.ttf
+        - style:  italic
+        - asset: assets/fonts/Poppins-Medium.ttf
+        - weight: 500
+        - asset: assets/fonts/Poppins-MediumItalic.ttf
+        - weight: 500
+        - style: italic
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+        - weight: 600
+        - asset: assets/fonts/Poppins-Bold.ttf
+        - weight: 700
+        
+        
+        
