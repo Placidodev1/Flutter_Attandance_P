@@ -37,7 +37,7 @@ def get_all_alunos():
             # Se a consulta retornar uma lista vazia, você pode retornar um HTTP 404.
             abort(404)
         else:
-            print(aluno)
+            # print(aluno)
             return jsonify({"data": aluno})
     # except pymysql.Error as db_error:
     #     # Captura exceções relacionadas ao banco de dados.
