@@ -19,3 +19,13 @@
 #     Id_carrinha = Column(Integer, ForeignKey('Carinha.idCarinha'), nullable=False)
 
 #     carrinha = relationship('Carinha', back_populates='alunos', cascade="all, delete")
+
+
+from flask import Blueprint
+
+# blp = Blueprint("alunoModel", __name__)
+
+class Aluno:
+    def init_aluno(self, id, imagem_caminho):
+        self.id = id
+        self.imagem_caminho = imagem_caminho

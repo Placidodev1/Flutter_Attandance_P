@@ -184,7 +184,7 @@ class _RegistarAlunosState extends State<RegistarAlunos> {
                     capture();
                     captureqr();
                   },
-                  child: Row(
+                  child: const Row(
                     children: [
                       Icon(Icons.camera),
                       SizedBox(

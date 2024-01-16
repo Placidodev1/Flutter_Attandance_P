@@ -1,1 +1,1 @@
-# from Models.Aluno import AlunoModel
+# from Models.Aluno import blp as alunoModel
