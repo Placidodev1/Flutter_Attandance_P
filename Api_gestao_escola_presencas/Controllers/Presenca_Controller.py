@@ -73,8 +73,6 @@ def get_Presenca_aluno(filter_type, idaluno):
         cursor.execute(query, idaluno)
         presenca = cursor.fetchall()
         cursor.close()
-        print("aqui")
-        print(presenca)
 
         return jsonify({"data": presenca})
 

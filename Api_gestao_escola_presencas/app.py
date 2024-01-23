@@ -2,8 +2,8 @@ from flask import  Flask, request, jsonify
 from flask_jwt_extended import JWTManager
 from flask_smorest import Api
 from flask_sqlalchemy import SQLAlchemy
-from Controllers import blpAluno, blpCArinha, blpPresenca, BlpFuncionario, BlpLogin, BlpVerificadordepresenca, BlpMomentoPresenca, get_imagens
-# from Models import alunoModel
+from Controllers import blpAluno, blpCArinha, blpPresenca, BlpFuncionario, BlpLogin, BlpVerificadordepresenca, BlpMomentoPresenca, get_imagens, DadosResponsavel
+
 import asyncio, aiohttp
 
 app = Flask(__name__)
@@ -16,6 +16,7 @@ app.register_blueprint(blpPresenca)
 app.register_blueprint(BlpLogin)
 app.register_blueprint(BlpMomentoPresenca)
 app.register_blueprint(get_imagens)
+app.register_blueprint(DadosResponsavel)
 # app.register_blueprint(alunoModel)
 app.config['JWT_SECRET_KEY'] = 'sua_chave_secreta_aqui'  
 jwt = JWTManager(app)

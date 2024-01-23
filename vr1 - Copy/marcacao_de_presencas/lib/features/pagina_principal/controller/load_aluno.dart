@@ -21,7 +21,7 @@ class CarregaAlunos {
         return alunosList;
       } else {
         THelperFunctions.showAlert(
-            "Erro ao carregar dados", "Resposta inválida do servidor");
+            "Erro ao carregar dados", "Resposta inválida do servidor",);
         return [];
       }
     } catch (error) {

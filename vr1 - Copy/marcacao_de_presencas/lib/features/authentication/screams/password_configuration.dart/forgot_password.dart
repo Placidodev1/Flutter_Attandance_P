@@ -46,7 +46,7 @@ class ForgotPassword extends StatelessWidget {
               height: TSizes.spaceBtwSections,
             ),
 
-            SizedBox(width: double.infinity, child: ElevatedButton( onPressed: ()=> Get.to(()=>ResetPassword()), child: const Text(TStrings.subait)))
+            SizedBox(width: double.infinity, child: ElevatedButton( onPressed: ()=> Get.to(()=>const ResetPassword()), child: const Text(TStrings.subait)))
             // Submit Button
           ],
         ),

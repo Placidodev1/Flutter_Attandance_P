@@ -6,24 +6,6 @@ from flask import jsonify,abort
 
 blp = Blueprint("aluno", __name__)
 
-# @blp.route("/Alunos")
-# class Get_aluno():
-
-# #   LISTAR TODOS Alunos 
-#    def get_all_alunos(self):
-#         try:
-#             query = """SELECT * FROM aluno;"""
-#             cursor = connection.cursor()
-#             cursor.execute(query)
-#             aluno = cursor.fetchall()
-#             cursor.close()
-#         except Exception as ex:
-#             return jsonify({"message":str(ex),"code":500})
-#         if aluno is None:
-#             abort(404)
-#         return jsonify({"data": aluno })
-
-
 @blp.route("/Alunos", methods=["GET"])
 def get_all_alunos():
     try:

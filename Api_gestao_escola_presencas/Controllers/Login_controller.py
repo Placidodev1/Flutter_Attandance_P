@@ -17,7 +17,7 @@ def login():
             password = int(usuario['password'])
             print(password)
             cursor = connection.cursor()
-            query = """SELECT id_Carrinha, Senha, idFuncionario, Email, Nome FROM funcionario WHERE (Email = %s AND Senha = %s)"""
+            query = """SELECT id_Carrinha, Senha, idFuncionario, Email, Departamento, Cargo, Nome FROM funcionario WHERE (Email = %s AND Senha = %s)"""
             cursor.execute(query,( usuario1, password))
             user = cursor.fetchone()
             
@@ -28,7 +28,6 @@ def login():
             exptime = datetime.now() + timedelta(minutes=15)
             exp_epoc_time = exptime.timestamp()
 
-
             
 
             if user is None:
@@ -37,9 +36,11 @@ def login():
                 id = int(user['idFuncionario'])
                 Carinha= user['id_Carrinha']
                 user_name =  user['Nome']
+                cargo = user["Cargo"]
+                departamento = user["Departamento"]
                 access_token = create_access_token(identity=id)    
 
-                return jsonify({"token": access_token, "id":id, "code":200, "Carinha": Carinha, "nome_user":user_name,   } )
+                return jsonify({"token": access_token, "id":id, "code":200, "Carinha": Carinha, "nome_user":user_name,  "cargo": cargo, "departamento": departamento } )
         except pymysql.err.InterfaceError as e:
             return(f"Erro de interface: {e}")
         except pymysql.err.DataError as e:
@@ -78,5 +79,5 @@ def loginresponsavel():
                 user_name =  user['Nome']
                 access_token = create_access_token(identity=id)    
 
-                return jsonify({"token": access_token, "id":user_name, "code":200, "nome_user":user_name, "idAluno":id  } )
+                return jsonify({"token": access_token, "code":200, "nome_user":user_name, "idAluno":id  } )
             

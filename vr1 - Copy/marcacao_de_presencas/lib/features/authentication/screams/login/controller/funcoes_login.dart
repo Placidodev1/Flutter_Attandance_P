@@ -1,36 +1,36 @@
 
-import 'package:get/get.dart';
-import 'package:marcacao_de_presenca/features/authentication/screams/login/controller/controllerLoginN.dart';
-import 'package:marcacao_de_presenca/features/authentication/screams/login/controller/http_service.dart';
+// import 'package:get/get.dart';
+// import 'package:marcacao_de_presenca/features/authentication/screams/login/controller/controllerLoginN.dart';
+// import 'package:marcacao_de_presenca/features/authentication/screams/login/controller/http_service.dart';
 
 
-class FuncoesLogin {
-  final controller = Get.put(ControllerLogin());
-  void _navigar() async {
+// class FuncoesLogin {
+//   final controller = Get.put(ControllerLogin());
+//   void _navigar() async {
 
-      // showCustomDialog(context);
+//       // showCustomDialog(context);
 
-      // Verifica o controller ao se tentar iniciar sessao
-      String username = (controller.controllerusername!.text.isEmpty)
-          ? "vazio"
-          : controller.controllerusername!.text;
+//       // Verifica o controller ao se tentar iniciar sessao
+//       String username = (controller.controllerusername!.text.isEmpty)
+//           ? "vazio"
+//           : controller.controllerusername!.text;
 
-      int password = (controller.passwordController!.text.isEmpty)
-          ? 0
-          : int.parse(controller.passwordController!.text);
+//       int password = (controller.passwordController!.text.isEmpty)
+//           ? 0
+//           : int.parse(controller.passwordController!.text);
 
-      try {
+//       try {
 
-        if (password != 0 || username != "vazio") {
+//         if (password != 0 || username != "vazio") {
 
-            await HttpService.login();
+//             await HttpService.login();
 
-        } else {
+//         } else {
           
-        }
-      } catch (error) {
-        print("Erro durante o login: $error");
-      }
-    }
-  }
+//         }
+//       } catch (error) {
+//         print("Erro durante o login: $error");
+//       }
+//     }
+//   }
 

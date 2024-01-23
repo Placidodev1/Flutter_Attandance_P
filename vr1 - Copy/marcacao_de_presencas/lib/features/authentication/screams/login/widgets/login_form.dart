@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:marcacao_de_presenca/constants/sizes.dart';
 import 'package:marcacao_de_presenca/constants/strings.dart';
-import 'package:marcacao_de_presenca/features/authentication/screams/login/controller/controllerLoginN.dart';
+import 'package:marcacao_de_presenca/features/authentication/screams/login/controller/controller_login.dart';
 import 'package:marcacao_de_presenca/features/authentication/screams/login/controller/http_service.dart';
 import 'package:marcacao_de_presenca/features/authentication/screams/password_configuration.dart/forgot_password.dart';
 

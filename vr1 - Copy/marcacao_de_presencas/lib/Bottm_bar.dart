@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -6,7 +8,7 @@ import 'package:marcacao_de_presenca/utils/helpers/helper_functions.dart';
 
 
 class NavigatorMenu extends StatelessWidget {
-  NavigatorMenu({super.key});
+  const NavigatorMenu({super.key});
 
   
 

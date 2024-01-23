@@ -6,3 +6,4 @@ from Controllers.Login_controller import blp as BlpLogin
 from Controllers.Verificador_de_momento import blp as BlpVerificadordepresenca
 from Controllers.Momento_presenca import blp as BlpMomentoPresenca
 from Controllers.get_imagens import blp as get_imagens
+from Controllers.responsavel_controller import blp as DadosResponsavel

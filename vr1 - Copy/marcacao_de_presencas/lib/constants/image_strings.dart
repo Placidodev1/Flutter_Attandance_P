@@ -22,6 +22,9 @@ class TImages {
   static const String animation5 = "assets/imagens/animations/sammy-line-man-with-money.png";
   static const String animation6 = "assets/imagens/animations/sammy-line-man-with-money.png";
   static const String animation7 = "assets/imagens/animations/8a8478b8-acef-473d-bbc7-4e4b3ab860e4.png";
+  
+  // Image
+  static const String image1 = "assets/imagens/animations/sammy-line-tired-man-sits-sad-next-to-his-dog.png";
 
 
 }

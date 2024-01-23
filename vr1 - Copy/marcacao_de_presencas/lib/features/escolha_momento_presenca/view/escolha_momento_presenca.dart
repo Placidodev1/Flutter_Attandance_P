@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_full_hex_values_for_flutter_colors
 
 import 'package:flutter/material.dart';
-import 'package:marcacao_de_presenca/common/widgets/appBar.dart';
+import 'package:marcacao_de_presenca/common/widgets/app_bar.dart';
 import 'package:marcacao_de_presenca/features/escolha_momento_presenca/view/widgets/momentos.dart';
 import 'package:marcacao_de_presenca/utils/helpers/helper_functions.dart';
 

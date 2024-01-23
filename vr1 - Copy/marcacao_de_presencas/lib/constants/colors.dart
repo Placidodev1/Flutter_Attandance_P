@@ -1,3 +1,5 @@
+// ignore_for_file: use_full_hex_values_for_flutter_colors
+
 import 'package:flutter/material.dart';
 
 class TColors {
@@ -27,7 +29,7 @@ class TColors {
   static const Color primaryBackground = Color(0xFFF3F5FF);
 
   // background de containers
-  static const LinearContainer = Color(0xfff003459);
+  static const linearContainer = Color(0xfff003459);
   static Color darkContainer = const Color.fromARGB(10, 255, 255, 255);
 
   // Button Colors

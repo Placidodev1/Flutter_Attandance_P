@@ -8,7 +8,7 @@ import 'package:marcacao_de_presenca/features/authentication/screams/login/widge
 import 'package:marcacao_de_presenca/features/authentication/screams/login/widgets/login_header.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key});
+  const LoginScreen({super.key, });
 
   @override
   Widget build(BuildContext context) {

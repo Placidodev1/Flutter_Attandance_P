@@ -61,11 +61,13 @@ class TDeviceUtilities {
   }
 
   static Future<bool> isKeyboardVisible() async {
-    final ViewInsets = View.of(Get.context!).viewInsets;
-    return ViewInsets.bottom > 0;
+    final viewInsets = View.of(Get.context!).viewInsets;
+    return viewInsets.bottom > 0;
   }
 
   static Future<bool> isPhysicalDevice() async {
+    // Verificar cofigo
+    // ignore: unrelated_type_equality_checks
     return defaultTargetPlatform == TargetPlatform ||
         defaultTargetPlatform == TargetPlatform.iOS;
   }

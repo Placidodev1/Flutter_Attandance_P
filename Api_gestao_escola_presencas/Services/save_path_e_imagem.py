@@ -6,26 +6,27 @@ from db import connection
 class SalvaImagemEPath():
     def adicionar_aluno_e_path():
         try:
+
             id = request.form['id']
             imagem = request.files['imagem']
-
+            print("2")
             # Salvar a imagem no diretório static/imagens
             caminho_imagem = os.path.join('static/imagens', imagem.filename)
             imagem.save(caminho_imagem)
-
-            novo_aluno = Aluno(id, caminho_imagem)
-
-            query = "UPDATE aluno SET `Local_subida_casa_escola` = %s WHERE idAluno = %s"
+            print("3")
+            # novo_aluno = Aluno(id, str(caminho_imagem))
+            print("4")
+            query = "UPDATE aluno SET `filepath` = %s WHERE idAluno = %s"
             cursor = connection.cursor()
-            cursor.execute(query, (novo_aluno.id, novo_aluno.imagem_caminho))
+            cursor.execute(query, (caminho_imagem, id))
             connection.commit()
             resultado = cursor.fetchone()
+            print(resultado)
             
 
             return jsonify({'message': 'Aluno adicionado com sucesso!'})
         except Exception as e:
             return jsonify({'error': str(e)})
-        
     def getPath():
         try:
             id = request.form['id']
