@@ -15,6 +15,7 @@ class AppPrincipal extends StatelessWidget {
       darkTheme: TAppTheme.darkTheme,
       home: const LoginScreen(),
       debugShowCheckedModeBanner: false,
+      
     );
   }
 }

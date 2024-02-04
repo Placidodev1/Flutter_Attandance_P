@@ -1,4 +1,5 @@
 from flask import jsonify, abort, Blueprint
+import pymysql
 from db import connection
 
 blp = Blueprint("Carinha", __name__)
@@ -11,9 +12,9 @@ def get_carrinhas():
         cursor.execute(query)
         carinha = cursor.fetchall()
         cursor.close()
-
+        print(carinha)
         if not carinha:
-            # Se a consulta retornar uma lista vazia, você pode retornar um HTTP 404.
+            # Se a consulta retornar uma lista vazia, retornar um HTTP 404.
             abort(404)
         else:
             return jsonify({"data": carinha})

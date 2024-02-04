@@ -15,6 +15,7 @@ dependencies:
 
   # utilities packeges
   http: ^1.1.0
+  connectivity_plus: ^5.0.2
   intl: ^0.18.1
   logger: ^2.0.1
   url_launcher: ^6.2.2
@@ -45,6 +46,7 @@ dependencies:
   # state Manegement
   get: ^4.6.5
   get_storage: 2.1.1
+  sqflite: ^2.3.1
 
 
 

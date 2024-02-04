@@ -1,13 +1,15 @@
 // ignore_for_file: use_full_hex_values_for_flutter_colors
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:marcacao_de_presenca/features/presenca_detalhes/view/presenca_detalhes.dart';
 
 
 class Presencasimples extends StatelessWidget {
   final String? data;
   final String? estado1;
   final String? estado2;
-  final int? idpresenca;
+  final int idpresenca;
   
   const Presencasimples({
     super.key,
@@ -23,7 +25,7 @@ class Presencasimples extends StatelessWidget {
   Widget build(BuildContext context) {
   
     return GestureDetector(
-       
+       onTap: ()=> Get.to( Detalhesdafalta(idpresenca: idpresenca)),
       child: Container(
         // width: containerWidth,
         height: 100,
@@ -61,8 +63,7 @@ class Presencasimples extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      estado1! ??
-                          'Pendente', // Se estado1 for nulo, use um valor padrão,
+                      estado1!,
                       style: TextStyle(
                         color:
                             estado1 == 'presente' ? Colors.green : Colors.red,
@@ -111,7 +112,7 @@ class Presencasimples extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      estado1! ?? 'Pendente',
+                      estado1!,
                       style: TextStyle(
                         color:
                             estado2 == 'presente' ? Colors.green : Colors.red,

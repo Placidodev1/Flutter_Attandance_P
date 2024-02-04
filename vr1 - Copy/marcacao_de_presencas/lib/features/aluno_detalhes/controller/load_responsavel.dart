@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:marcacao_de_presenca/features/aluno_detalhes/model/responsavel_model.dart';
+
 import 'package:marcacao_de_presenca/features/pagina_principal/controller/aluno_estado.dart';
 import 'package:marcacao_de_presenca/utils/helpers/helper_functions.dart';
 import 'package:marcacao_de_presenca/utils/http/http_client.dart';

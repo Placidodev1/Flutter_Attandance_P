@@ -7,11 +7,10 @@ import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/zondicons.dart';
 import 'package:marcacao_de_presenca/constants/sizes.dart';
 import 'package:marcacao_de_presenca/features/aluno_detalhes/view/aluno_detalhes.dart';
-
-import 'package:marcacao_de_presenca/features/pagina_principal/model/aluno_model.dart';
+import 'package:marcacao_de_presenca/utils/local_storage/sqlite/modals/aluno_model.dart';
 
 class PresencaFuncionario extends StatelessWidget {
-  final AlunosModel aluno;
+  final ModelAluno aluno;
   const PresencaFuncionario({
     Key? key,
     required this.aluno,
@@ -61,7 +60,7 @@ class PresencaFuncionario extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        aluno.nome,
+                        aluno.Nome,
                         style: const TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w600,

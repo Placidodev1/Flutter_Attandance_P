@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:marcacao_de_presenca/common/widgets/app_bar.dart';
 import 'package:marcacao_de_presenca/common/widgets/botao.dart';
 import 'package:marcacao_de_presenca/constants/sizes.dart';
-import 'package:marcacao_de_presenca/features/responsavel_principal_pagina/controller/carrega_presencas.dart';
+import 'package:marcacao_de_presenca/features/pagina_principal/model/aluno_model.dart';
+import 'package:marcacao_de_presenca/features/responsavel_principal_pagina/view/wigets/lista_presencas.dart';
 import 'package:marcacao_de_presenca/features/responsavel_principal_pagina/view/wigets/prensenca_simples.dart';
 import 'package:marcacao_de_presenca/utils/helpers/helper_functions.dart';
 
@@ -17,16 +18,6 @@ class PaginaprincipalResponsavel extends StatefulWidget {
 class _PaginaprincipalState extends State<PaginaprincipalResponsavel> {
   List<dynamic> presenca = [];
   List<Presencasimples> presencaformatada = [];
-
-  //Lista as presencas
-  // void fetchalunos(int idaluno) async {
-  //   await fetchaPresenca(idaluno);
-  // }
-  @override
-  void initState() {
-    super.initState();
-    CarregaPresencas.carregarPresencas(1);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +62,7 @@ class _PaginaprincipalState extends State<PaginaprincipalResponsavel> {
             GestureDetector(
               onTap: () {
                 // Lógica a ser executada quando qualquer parte do GestureDetector é tocada
-                print('Alguma parte do GestureDetector foi tocada!');
+
               },
               child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -109,7 +100,7 @@ class _PaginaprincipalState extends State<PaginaprincipalResponsavel> {
             const SizedBox(
               height: 20,
             ),
-
+            CamposDeDadosPresenca(aluno: AlunosModel(idAluno: 6, nome: "nome", codigoDaEscola: 22, qrCode: "qrCode", barcode: 11, filepath: "filepath", telefoneDoResponsavel: 22, endereco: "endereco", foto: "foto", idCarrinha: 23),),
             // Column(
             //   children: [
             //     for (var presencadisplay in presencaformatada)
@@ -119,6 +110,7 @@ class _PaginaprincipalState extends State<PaginaprincipalResponsavel> {
             //           const SizedBox(height: TSizes.spaceBtwItems),
             //         ],
             //       ),
+            
                 const SizedBox(
                   height: 15,
                 ),

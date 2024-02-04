@@ -110,6 +110,7 @@ def get_Presenca(filter_type):
             cursor.execute(querytodos)
             presenca1 = cursor.fetchall()
             cursor.close
+            print(presenca1)
             return jsonify({"data": presenca1})
                     
     query = f"""SELECT * FROM presenca WHERE   {sql_filtros}   ;"""
@@ -119,7 +120,7 @@ def get_Presenca(filter_type):
     presenca = cursor.fetchall()
     cursor.close()
     
-
+    print(presenca)
     return jsonify({"data": presenca})
 
 

@@ -8,13 +8,14 @@ import 'package:marcacao_de_presenca/constants/sizes.dart';
 import 'package:marcacao_de_presenca/features/aluno_detalhes/view/widgets/alunos_list.dart';
 import 'package:marcacao_de_presenca/features/aluno_detalhes/view/widgets/avatar.dart';
 import 'package:marcacao_de_presenca/features/pagina_principal/controller/aluno_estado.dart';
-import 'package:marcacao_de_presenca/features/pagina_principal/model/aluno_model.dart';
+
+import 'package:marcacao_de_presenca/utils/local_storage/sqlite/modals/aluno_model.dart';
 
 
 // ignore: must_be_immutable
 class DetalhesAlunoInfo extends StatefulWidget {
   DetalhesAlunoInfo({super.key, required this.aluno});
-  AlunosModel aluno;
+  ModelAluno aluno;
 
   @override
   State<DetalhesAlunoInfo> createState() => _DetalhesAlunoInfoState();
@@ -40,7 +41,7 @@ class _DetalhesAlunoInfoState extends State<DetalhesAlunoInfo> {
                   const SizedBox(height: TSizes.spaceBtwSections),
                   Center(
                     child: Text(
-                      'Carinha ${widget.aluno.idCarrinha} ',
+                      'Carinha ${widget.aluno.Id_carrinha} ',
                       style: const TextStyle(
                         color: Color(0xFFF000000),
                         fontWeight: FontWeight.w600,

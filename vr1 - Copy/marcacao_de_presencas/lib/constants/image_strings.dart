@@ -3,7 +3,7 @@ class TImages {
 
   //   Logos 1byte
   static const String logoNormal = "assets/logos/logo.webp";
-  static const String logoDark = "assets/logos/logo black.png";
+  static const String logoDark = "assets/logos/logo.webp";
 
   //  social Logos
   static const String google = "assets/logos/vecteezy_colourful-google-logo-on-white-background_10353285.jpg";

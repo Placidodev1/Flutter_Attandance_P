@@ -6,7 +6,12 @@ from flask import jsonify, abort, Blueprint, request
 blp = Blueprint("DadosResponsavel", __name__)
 
 
-# Marca a presenca aos alunos
+# Busca responsavel especifico
 @blp.route("/responsavel/<int:idAluno>", methods=['GET'])
 def buscaResponsavel(idAluno):
-    return LoadResponsavelService.buscaNome(idAluno)
+    return LoadResponsavelService.buscaDados(idAluno)
+
+# Busca todos os responsaveis 
+@blp.route("/responsaveis", methods=['GET'])
+def buscaTodosResponsaveis():
+    return LoadResponsavelService.buscaTodosDados()

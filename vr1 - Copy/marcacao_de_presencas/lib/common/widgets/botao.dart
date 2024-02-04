@@ -36,12 +36,12 @@ class Botao extends StatelessWidget {
             height: TSizes.buttonHeight,
             child: ElevatedButton(
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                  backgroundColor: MaterialStateProperty.all<Color>(cor),
                 ),
                 onPressed: () {
-                  // rota;
+                  // Get.toNamed();
                 },
-                child: Text("texto")),
+                child: Text(texto)),
           ),
         ),
       ],

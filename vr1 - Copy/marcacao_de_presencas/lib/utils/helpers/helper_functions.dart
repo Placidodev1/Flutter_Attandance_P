@@ -13,6 +13,14 @@ class THelperFunctions {
     ));
   }
 
+  static void showProgress(){
+  showDialog(
+          context: Get.context!,
+          builder: (context) {
+            return const Center(child: CircularProgressIndicator());
+          });
+  }
+
   static void showAlert(String tittle, String message) {
     showDialog(
         context: Get.context!,

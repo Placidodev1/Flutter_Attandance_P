@@ -6,20 +6,6 @@ import 'package:marcacao_de_presenca/features/responsavel_principal_pagina/view/
 import 'package:marcacao_de_presenca/utils/helpers/helper_functions.dart';
 import 'package:marcacao_de_presenca/utils/http/http_client.dart';
 
-//             await HttpService.login(username, password, context);
-//           } else if (password.toString().length == 6) {
-//             await HttpServiceEncarregado.login(username, password, context);
-
-//           }else{
-//             await HttpService.login(username, password, context);
-//           }
-//         } else {
-//           dialogoCostumizado(context, "Username ou password vazio", "Ooops!!!");
-//         }
-//       } catch (error) {
-//         print("Erro durante o login: $error");
-//       }
-//     }
 class HttpService {
   static Future<bool> login() async {
     final controller = Get.put(ControllerLogin());
